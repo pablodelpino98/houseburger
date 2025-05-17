@@ -117,7 +117,7 @@ body {
 }
 
 /* ================================== COMMON COMPONENTS ================================== */
-.btn-menu, .order-button {
+.form-container button, .btn-menu, .order-button {
     display: inline-block;
     padding: 12px 24px;
     background-color: #ffa600;
