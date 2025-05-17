@@ -38,7 +38,7 @@ function renderCategory($pdo, $category, $title) {
 
         <?php
         renderCategory($pdo, 'hamburguesa', 'Hamburguesas');
-        echo "<br><p>El precio no incluye papas ni bebidas. Puede añadir Papas fritas clásicas y un refresco por un suplemento de 3.00€</p>";
+        echo "<br><p>El precio no incluye papas ni bebidas. Puede añadir Papas fritas clásicas y un refresco por un suplemento de 2.99€</p>";
 
         renderCategory($pdo, 'papas', 'Papas fritas');
         renderCategory($pdo, 'nachos', 'Nachos');

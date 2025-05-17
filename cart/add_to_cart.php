@@ -10,7 +10,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cart'] = [];
     }
 
-    $_SESSION['cart'][] = $product;
+    // Validar que hay un ID
+    $productId = $product['product_id'] ?? $product['id'] ?? null;
+    if (!$productId) {
+        echo json_encode(['success' => false, 'message' => 'ID del producto no proporcionado']);
+        exit;
+    }
+
+    // Definir tipo (normal o combo)
+    $type = $product['type'] ?? 'normal';
+
+    // Buscar si ya está en el carrito ese mismo producto con ese mismo tipo
+    $found = false;
+    foreach ($_SESSION['cart'] as &$item) {
+        if (
+            ($item['product_id'] ?? $item['id']) == $productId &&
+            ($item['type'] ?? 'normal') === $type
+        ) {
+            // Si existe con mismo tipo, aumentar cantidad
+            $item['quantity'] = ($item['quantity'] ?? 1) + 1;
+            $found = true;
+            break;
+        }
+    }
+    unset($item); // romper referencia
+
+    if (!$found) {
+        $product['quantity'] = 1;
+        $product['type'] = $type;
+        $_SESSION['cart'][] = $product;
+    }
 
     echo json_encode(['success' => true, 'cartCount' => count($_SESSION['cart'])]);
 }

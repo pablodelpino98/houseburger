@@ -793,6 +793,157 @@ input::placeholder {
     color: #ffa600;
 }
 
+/* ================================== ORDERS PAGE ================================== */
+.orders-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
+
+.order-card {
+    background-color: rgba(60, 60, 60, 0.955);
+    border-radius: 10px;
+    border-left: 5px solid #ffa600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.order-header {
+    background-color: rgba(44, 44, 44, 0.9);
+    padding: 15px 20px;
+    border-bottom: 1px solid #ffa600;
+}
+
+.order-header h3 {
+    color: #ffa600;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.order-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+.order-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.order-body {
+    padding: 20px;
+}
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.products-table th {
+    background-color: rgba(139, 0, 0, 0.5);
+    color: #ffa600;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.products-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #444;
+    color: #ddd;
+    vertical-align: middle;
+}
+
+.products-table tr:last-child td {
+    border-bottom: none;
+}
+
+.combo-badge {
+    background-color: #8b0000;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-left: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.order-total {
+    text-align: right;
+    font-size: 1.2rem;
+    padding: 15px;
+    background-color: rgba(44, 44, 44, 0.7);
+    border-radius: 5px;
+    margin-top: 15px;
+    color: #ffa600;
+    font-weight: bold;
+}
+
+.no-orders {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(44, 44, 44, 0.8);
+    border-radius: 10px;
+    border: 1px dashed #ffa600;
+}
+
+.no-orders p {
+    color: #ffa600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* ================================== PAGINATION ================================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ffa600;
+    color: #000;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    min-width: 40px;
+    text-align: center;
+}
+
+.pagination a:hover {
+    background-color: #e69500;
+    transform: translateY(-2px);
+}
+
+.pagination .active {
+    background-color: #e69500;
+    cursor: default;
+}
+
+.pagination span {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #ddd;
+}
+
 /* ================================== FOOTER ================================== */
 .footer {
     background-color: #8b0000;
@@ -916,6 +1067,23 @@ input::placeholder {
     .order-summary li {
         flex-direction: column;
     }
+        .order-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .products-table {
+        font-size: 0.9rem;
+    }
+    
+    .products-table th, 
+    .products-table td {
+        padding: 8px 10px;
+    }
+    
+    .order-header h3 {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -970,6 +1138,18 @@ input::placeholder {
     }
     
     #deliveryForm {
+        padding: 15px;
+    }
+        .products-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .order-card {
+        margin-bottom: 20px;
+    }
+    
+    .order-body {
         padding: 15px;
     }
 }

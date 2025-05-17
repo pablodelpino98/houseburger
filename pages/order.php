@@ -54,7 +54,7 @@ function renderOrderCategory($pdo, $category, $title) {
 <!-- Modal para combos de hamburguesa -->
 <div id="modal" class="modal-overlay" style="display: none;">
   <div class="modal-content">
-    <p id="modal-message">¿Desea añadir Papas Fritas Clásicas y un refresco por 3,00€?</p>
+    <p id="modal-message">¿Desea añadir Papas Fritas Clásicas y un refresco por 2,99€?</p>
 
     <select id="refrescoSelect" style="display: none;">
       <option value="Coca-Cola">Coca-Cola</option>
