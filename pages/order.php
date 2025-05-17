@@ -20,8 +20,13 @@ function renderOrderCategory($pdo, $category, $title) {
         $price = number_format($product['price'], 2, '.', '.');
         $image = htmlspecialchars($product['image']);
         $type = htmlspecialchars($product['category']);
+        $product_id = (int)$product['id'];
 
-        echo "<div class='product-card' data-type='$type' data-name='$name' data-price='{$product['price']}'>
+        echo "<div class='product-card' 
+                    data-id='$product_id' 
+                    data-type='$type' 
+                    data-name='$name' 
+                    data-price='{$product['price']}'>
                 <img src='../assets/images/$image' alt='$name'>
                 <h3>$name</h3>
                 <span class='price'>{$price} €</span>
@@ -49,7 +54,7 @@ function renderOrderCategory($pdo, $category, $title) {
 <!-- Modal para combos de hamburguesa -->
 <div id="modal" class="modal-overlay" style="display: none;">
   <div class="modal-content">
-    <p id="modal-message">¿Deseas añadir papas fritas clásicas y un refresco por 3,00€?</p>
+    <p id="modal-message">¿Desea añadir Papas Fritas Clásicas y un refresco por 3,00€?</p>
 
     <select id="refrescoSelect" style="display: none;">
       <option value="Coca-Cola">Coca-Cola</option>

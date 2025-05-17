@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmComboBtn.style.display = 'inline-block';
     cancelComboBtn.style.display = 'inline-block';
     closeModalBtn.style.display = 'none';
-    modalMessage.textContent = '¿Deseas añadir papas fritas clásicas y un refresco por 3,00€?';
+    modalMessage.textContent = '¿Desea añadir Papas Fritas Clásicas y un Refresco por 3,00€?';
   };
 
   const closeModal = () => {
@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('click', (e) => {
       const productCard = e.target.closest('.product-card');
       const product = {
+        product_id: parseInt(productCard.getAttribute('data-id')),
         name: productCard.getAttribute('data-name'),
         price: parseFloat(productCard.getAttribute('data-price')),
         type: productCard.getAttribute('data-type')
@@ -86,13 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
   confirmComboBtn.addEventListener('click', () => {
     if (refrescoSelect.style.display === 'none') {
       refrescoSelect.style.display = 'inline-block';
-      modalMessage.textContent = 'Selecciona el refresco para tu combo y confirma:';
+      modalMessage.textContent = 'Seleccione el refresco para tu combo y confirma:';
       confirmComboBtn.textContent = 'Añadir combo';
       cancelComboBtn.style.display = 'none';
     } else {
       const refresco = refrescoSelect.value;
       const combo = {
-        name: `${currentProduct.name} + papas fritas clásicas + ${refresco}`,
+        product_id: currentProduct.product_id, // usa el mismo ID
+        name: `${currentProduct.name} + Papas Fritas Clásicas + ${refresco}`,
         price: currentProduct.price + 3.00,
         type: 'combo'
       };
