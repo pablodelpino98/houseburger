@@ -22,7 +22,7 @@ include 'database.php';
                     <li><a href="../pages/menu.php">Carta</a></li>
                     <?php if(isLoggedIn()): ?>
                         <li><a href="../pages/account.php">Mi Cuenta</a></li>
-                        <li><a href="../pages/orders.php">Mis Pedidos</a></li>
+                        <li><a href="../pages/last_orders.php">Mis Pedidos</a></li>
                         <li><a href="../logout.php">Cerrar Sesión</a></li>
                     <?php else: ?>
                         <li><a href="../pages/login.php">Iniciar Sesión</a></li>

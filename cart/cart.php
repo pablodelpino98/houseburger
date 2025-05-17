@@ -22,13 +22,15 @@ if (session_status() === PHP_SESSION_NONE) {
                     <?php else: ?>
                         <?php foreach ($cart as $index => $item): ?>
                             <div class="cart-item">
-                                <p><strong><?= htmlspecialchars($item['name']) ?></strong> - <?= number_format($item['price'], 2) ?> €</p>
+                                <p><strong><?= htmlspecialchars($item['name']) ?></strong> - 
+                                <?= $item['quantity'] ?> x <?= number_format($item['price'], 2) ?> € = 
+                                <?= number_format($item['price'] * $item['quantity'], 2) ?> €</p>
                                 <form action="../cart/remove_from_cart.php" method="POST" style="display: inline;">
                                     <input type="hidden" name="index" value="<?= $index ?>">
                                     <button type="submit" class="btn-menu">Eliminar</button>
                                 </form>
                             </div>
-                            <?php $total += $item['price']; ?>
+                            <?php $total += $item['price'] * $item['quantity']; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>

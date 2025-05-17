@@ -2,6 +2,7 @@
 include '../includes/header.php';
 include '../includes/database.php';
 
+date_default_timezone_set('UTC'); // Zona horaria UTC
 $order_id = $_GET['order_id'] ?? null;
 
 if (!$order_id) {

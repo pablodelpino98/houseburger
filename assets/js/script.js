@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmComboBtn.style.display = 'inline-block';
     cancelComboBtn.style.display = 'inline-block';
     closeModalBtn.style.display = 'none';
-    modalMessage.textContent = '¿Desea añadir Papas Fritas Clásicas y un Refresco por 3,00€?';
+    modalMessage.textContent = '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?';
   };
 
   const closeModal = () => {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const combo = {
         product_id: currentProduct.product_id, // usa el mismo ID
         name: `${currentProduct.name} + Papas Fritas Clásicas + ${refresco}`,
-        price: currentProduct.price + 3.00,
+        price: currentProduct.price + 2.99,
         type: 'combo'
       };
       addToCart(combo);
@@ -134,14 +134,15 @@ function renderCart() {
       let total = 0;
 
       cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
         const div = document.createElement('div');
         div.classList.add('cart-item');
         div.innerHTML = `
-          <p><strong>${item.name}</strong> - ${item.price.toFixed(2)} €</p>
+          <p><strong>${item.name}</strong> - ${item.quantity} x ${item.price.toFixed(2)} € = ${itemTotal.toFixed(2)} €</p>
           <button onclick="removeFromCart(${index})">Eliminar</button>
         `;
         cartContent.appendChild(div);
-        total += parseFloat(item.price);
+        total += itemTotal;
       });
 
       totalElement.textContent = `Total: ${total.toFixed(2)} €`;
