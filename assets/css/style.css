@@ -1,4 +1,4 @@
-/* RESET */
+/* ================================== RESET & BASE STYLES ================================== */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +15,7 @@ body {
     flex-direction: column;
 }
 
-/* HEADER */
+/* ================================== HEADER & NAVIGATION ================================== */
 .header {
     background-color: #ffa600;
     padding: 10px 20px;
@@ -56,7 +56,7 @@ body {
     text-decoration: none;
     color: #000;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: all 0.3s;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -116,28 +116,101 @@ body {
     border-radius: 50%;
 }
 
-/* HOME - Estilos mejorados */
-.home-container {
+/* ================================== COMMON COMPONENTS ================================== */
+.btn-menu, .order-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffa600;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-menu:hover, .order-button:hover {
+    background-color: #e69500;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-large {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+.phone-link {
+    color: #ffa600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.phone-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ================================== PAGE CONTAINERS ================================== */
+.home-container,
+.form-page-container,
+.menu-page-container {
     padding: 40px 20px;
     min-height: calc(100vh - 140px);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.home-content {
+.home-content,
+.form-container,
+.menu-content,
+.order-summary,
+.payment-form,
+.pay-complete {
     background-color: rgba(44, 44, 44, 0.95);
     border: 2px solid #8b0000;
     border-radius: 15px;
-    padding: 40px;
-    max-width: 1200px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     width: 100%;
+    color: #fff;
 }
 
+.home-content {
+    max-width: 1200px;
+    padding: 40px;
+    text-align: center;
+}
+
+.form-container,
+.payment-form,
+.pay-complete {
+    max-width: 600px;
+    padding: 30px;
+}
+
+.menu-content {
+    max-width: 1200px;
+    padding: 30px;
+    text-align: center;
+}
+
+.order-summary {
+    max-width: 800px;
+    padding: 30px;
+    margin: 40px auto;
+}
+
+/* ================================== HOME PAGE ================================== */
 .home-content h1 {
     font-size: 2.8rem;
     margin-bottom: 30px;
     color: #ffa600;
-    text-align: center;
 }
 
 .home-content h1 span {
@@ -145,7 +218,6 @@ body {
     text-shadow: 2px 2px 0 #ffa600;
 }
 
-/* Hero Section */
 .hero-section {
     display: flex;
     align-items: center;
@@ -189,7 +261,6 @@ body {
     transform: scale(1.05);
 }
 
-/* FEATURE CARDS CON IMÁGENES */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -202,7 +273,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border-top: 4px solid #ffa600;
 }
@@ -216,29 +287,21 @@ body {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
     border-radius: 10px;
     border-bottom: 2px solid #ffa600;
 }
 
-.feature-content {
-    padding: 20px;
-    text-align: center;
-}
-
 .feature-card h3 {
     color: #ffa600;
-    margin-bottom: 15px;
+    margin: 15px 0;
     font-size: 1.4rem;
 }
 
 .feature-card p {
     color: #ddd;
     line-height: 1.6;
-    margin-bottom: 0;
 }
 
-/* Testimonials */
 .testimonials {
     margin: 60px 0;
 }
@@ -255,7 +318,6 @@ body {
     padding: 25px;
     border-radius: 10px;
     margin-bottom: 20px;
-    position: relative;
     border-left: 4px solid #8b0000;
 }
 
@@ -280,7 +342,6 @@ body {
     font-weight: bold;
 }
 
-/* CTA Section */
 .cta-section {
     text-align: center;
     margin-top: 60px;
@@ -295,174 +356,7 @@ body {
     margin-bottom: 20px;
 }
 
-.btn-menu {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #ffa600;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-menu:hover {
-    background-color: #e69500;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.btn-large {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-}
-
-.phone-link {
-    color: #ffa600;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-    display: inline-block;
-    margin-top: 15px;
-}
-
-.phone-link:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-/* FOOTER */
-.footer {
-    background-color: #8b0000;
-    color: #fff;
-    padding: 30px 40px;
-    text-align: center;
-    margin-top: auto;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-section h4 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: #ffa600;
-}
-
-.footer-section p {
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.footer-bottom {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.9rem;
-}
-
-/* FORM PAGE CONTAINER */
-.form-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    min-height: calc(100vh - 140px);
-}
-
-/* FORM CONTAINER */
-.form-container {
-    background: rgba(44, 44, 44, 0.95);
-    border: 2px solid #8b0000;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-    color: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ffa600;
-    font-size: 2rem;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-container input, 
-.form-container select,
-.form-container textarea {
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #999;
-    border-radius: 5px;
-    background-color: #444;
-    color: #fff;
-}
-
-.form-container input:focus,
-.form-container select:focus,
-.form-container textarea:focus {
-    outline: 2px solid #ffa600;
-}
-
-.form-container button {
-    padding: 12px;
-    font-size: 1rem;
-    background-color: #ffa600;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.form-container button:hover {
-    background-color: #e69500;
-    transform: translateY(-2px);
-}
-
-/* MENÚ */
-.menu-page-container {
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    min-height: calc(100vh - 140px);
-}
-
-.menu-content {
-    max-width: 1200px;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(44, 44, 44, 0.95);
-    border: 2px solid #8b0000;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
+/* ================================== MENU PAGE ================================== */
 .menu-content h1 {
     font-size: 2.5rem;
     margin-bottom: 30px;
@@ -491,8 +385,6 @@ body {
     max-width: calc(33.333% - 20px);
     background: rgba(60, 60, 60, 0.7);
     padding: 20px;
-    text-align: center;
-    color: #fff;
     border-radius: 10px;
     transition: transform 0.3s;
 }
@@ -532,7 +424,56 @@ body {
     color: #fff;
 }
 
-/* CART MODAL */
+/* ================================== FORMS ================================== */
+.form-container h2,
+.payment-form h1,
+.pay-complete h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffa600;
+    border-bottom: 2px solid #ffa600;
+    padding-bottom: 15px;
+}
+
+.form-container h2 {
+    font-size: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffa600;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #777;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #ffa600;
+    border-color: #ffa600;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+/* ================================== CART & MODALS ================================== */
 .cart-modal {
     position: fixed;
     top: 0;
@@ -561,7 +502,6 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     border: 2px solid #ffa600;
     position: relative;
-    color: #fff;
 }
 
 .cart-content::before {
@@ -571,7 +511,6 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #ffa600, #8b0000);
     border-radius: 15px 15px 0 0;
 }
 
@@ -679,36 +618,6 @@ body {
     transition: all 0.3s;
 }
 
-.cart-body > form button[type="submit"]:last-child {
-    background-color: #ffa600;
-    color: #000;
-}
-
-.cart-body > form button[type="submit"]:last-child:hover {
-    background-color: #e69500;
-    transform: translateY(-2px);
-}
-
-.cart-body > form button[type="submit"]:first-child {
-    background-color: #444;
-    color: #fff;
-    border: 1px solid #ffa600;
-}
-
-.cart-body > form button[type="submit"]:first-child:hover {
-    background-color: #555;
-}
-
-.login-alert {
-    color: #ffa600;
-    text-align: center;
-    font-size: 1.1rem;
-    padding: 20px;
-    border: 1px dashed #ffa600;
-    border-radius: 8px;
-}
-
-/* MODAL ORDER */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -733,7 +642,6 @@ body {
     padding: 30px;
     border-radius: 15px;
     text-align: center;
-    color: #fff;
     max-width: 450px;
     width: 90%;
     border: 2px solid #ffa600;
@@ -748,7 +656,6 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #ffa600, #8b0000);
     border-radius: 15px 15px 0 0;
 }
 
@@ -771,10 +678,6 @@ body {
     cursor: pointer;
 }
 
-#refrescoSelect:focus {
-    outline: 2px solid #ffa600;
-}
-
 #modal-buttons {
     display: flex;
     flex-direction: column;
@@ -788,7 +691,7 @@ body {
     cursor: pointer;
     border-radius: 8px;
     border: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
     width: 100%;
 }
 
@@ -822,12 +725,132 @@ body {
     background-color: #a00;
 }
 
+/* ================================== ORDER & PAYMENT PAGES ================================== */
+.order-summary h1,
+.payment-form h1,
+.pay-complete h1 {
+    font-size: 2.2rem;
+}
+
+.order-summary ul {
+    list-style: none;
+    margin: 25px 0;
+    padding: 0;
+}
+
+.order-summary li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: rgba(60, 60, 60, 0.7);
+    border-radius: 8px;
+    border-left: 4px solid #ffa600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-summary strong {
+    color: #ffa600;
+}
+
+.order-summary p {
+    margin: 20px 0;
+    font-size: 1.1rem;
+}
+
+#deliveryForm {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(60, 60, 60, 0.7);
+    border-radius: 10px;
+}
+
+#address-section, 
+#pickup-section {
+    padding: 15px;
+    margin: 15px 0;
+    background-color: rgba(70, 70, 70, 0.5);
+    border-radius: 8px;
+}
+
+#address-section p,
+#pickup-section p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+#address-section strong,
+#pickup-section strong {
+    color: #ffa600;
+}
+
+.pay-complete p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.pay-complete strong {
+    color: #ffa600;
+}
+
+/* ================================== FOOTER ================================== */
+.footer {
+    background-color: #8b0000;
+    color: #fff;
+    padding: 30px 40px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffa600;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+/* ================================== UTILITY CLASSES ================================== */
+.login-alert {
+    color: #ffa600;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 20px;
+    border: 1px dashed #ffa600;
+    border-radius: 8px;
+}
+
+/* ================================== ANIMATIONS ================================== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* RESPONSIVE */
+/* ================================== RESPONSIVE DESIGN ================================== */
 @media (max-width: 992px) {
     .hero-section {
         flex-direction: column;
@@ -872,20 +895,37 @@ body {
         flex: 0 0 calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
-    .features {
-        grid-template-columns: 1fr;
-    }
     
     .feature-card img {
         height: 180px;
     }
+    
+    .order-summary,
+    .payment-form,
+    .pay-complete {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .order-summary h1,
+    .payment-form h1,
+    .pay-complete h1 {
+        font-size: 1.8rem;
+    }
+    
+    .order-summary li {
+        flex-direction: column;
+    }
 }
 
-
-
 @media (max-width: 576px) {
-    .home-content {
-        padding: 25px;
+    .home-content,
+    .form-container,
+    .menu-content,
+    .order-summary,
+    .payment-form,
+    .pay-complete {
+        padding: 20px;
     }
     
     .home-content h1 {
@@ -897,7 +937,7 @@ body {
     }
     
     .cta-section {
-        padding: 25px 15px;
+        padding: 20px;
     }
     
     .cta-section h2 {
@@ -909,26 +949,27 @@ body {
         max-width: 100%;
     }
     
-    .form-container {
-        padding: 20px;
-    }
-    
-    .menu-content {
-        padding: 20px;
-    }
     .feature-card img {
         height: 160px;
-    }
-    
-    .feature-content {
-        padding: 15px;
     }
     
     .feature-card h3 {
         font-size: 1.2rem;
     }
     
-    .feature-card p {
+    .feature-card p,
+    .pay-complete p {
         font-size: 0.9rem;
+    }
+    
+    .order-summary,
+    .payment-form,
+    .pay-complete {
+        margin: 15px;
+        padding: 15px;
+    }
+    
+    #deliveryForm {
+        padding: 15px;
     }
 }

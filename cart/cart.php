@@ -37,7 +37,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <button type="submit" class="btn-menu">Vaciar carrito</button>
                 </form>
                 <form action="process_order.php" method="POST">
-                    <button type="submit" class="btn-menu">Pagar</button>
+                    <button type="submit" class="btn-menu">Tramitar pedido</button>
                 </form>
             <?php else: ?>
                 <p class="login-alert">Inicie sesión para usar el carrito</p>

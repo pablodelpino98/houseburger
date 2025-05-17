@@ -1,5 +1,7 @@
-<?php include '../includes/header.php'; ?>
-<?php include '../cart/cart.php'; ?>
+<?php 
+include '../includes/header.php';
+include '../cart/cart.php'; 
+?>
 
 <main class="form-page-container">
     <div class="form-container">
