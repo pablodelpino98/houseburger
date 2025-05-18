@@ -116,6 +116,19 @@ body {
     border-radius: 50%;
 }
 
+/* ================================== LOGO STYLES ================================== */
+.logo-img {
+    height: 80px;
+    width: auto; /* Mantiene la proporción */
+    max-width: 200px; /* Ajusta según el ancho de tu logo */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05); /* Efecto sutil al hacer hover */
+}
+
 /* ================================== COMMON COMPONENTS ================================== */
 .form-container button, .btn-menu, .order-button {
     display: inline-block;
@@ -396,7 +409,7 @@ body {
 
 .product-card img {
     width: 100%;
-    height: 180px;
+    height: 220px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -1039,6 +1052,10 @@ input::placeholder {
         align-items: center;
         text-align: center;
     }
+        .logo-img {
+        max-width: 160px;
+        max-height: 45px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1084,6 +1101,12 @@ input::placeholder {
     .order-header h3 {
         font-size: 1.3rem;
     }
+
+    .logo-img {
+    max-width: 140px;
+    max-height: 40px;
+    }
+    
 }
 
 @media (max-width: 576px) {
@@ -1151,5 +1174,10 @@ input::placeholder {
     
     .order-body {
         padding: 15px;
+    }
+
+    .logo-img {
+        max-width: 120px;
+        max-height: 35px;
     }
 }

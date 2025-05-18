@@ -116,14 +116,14 @@ foreach ($orders as $row) {
                                             <?php endif; ?>
                                         </td>
                                         <td style="text-align: center;"><?= $item['quantity'] ?></td>
-                                        <td style="text-align: right;">$<?= number_format($item['price'], 2) ?></td>
+                                        <td style="text-align: right;"><?= number_format($item['price'], 2) ?> €</td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
 
                         <div class="order-total">
-                            <strong><?= $translations['order_total'] ?>:</strong> $<?= number_format($order['total'], 2) ?>
+                            <strong><?= $translations['order_total'] ?>: <?= number_format($order['total'], 2) ?>€</strong>
                         </div>
                     </div>
                 </div>
