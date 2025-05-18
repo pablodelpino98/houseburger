@@ -21,17 +21,29 @@ La aplicación utiliza cookies para gestionar el idioma de la interfaz de manera
 
 ## 📸 Capturas de Pantalla
 
-![image](https://github.com/user-attachments/assets/9a0ff947-4181-4a44-b9ef-0d0fe0c016b6)
+![image](https://github.com/user-attachments/assets/0aaf21fb-ab61-4f95-adac-8d8528600423)
 
 ![image](https://github.com/user-attachments/assets/a874289d-d9c1-4f19-9ba6-ed2c39f7707d)
 
-![image](https://github.com/user-attachments/assets/a11b9179-c90f-4d2b-aad7-89815871f1f1)
+![image](https://github.com/user-attachments/assets/3c9b3d00-7840-4193-aa07-a76e236cfb7b)
 
-![image](https://github.com/user-attachments/assets/826e0785-2f8f-4c53-b899-917b92ec9972)
+![image](https://github.com/user-attachments/assets/8ea43147-e56c-44fb-a485-30b4dc433185)
 
-![image](https://github.com/user-attachments/assets/719094d1-212e-463a-a38d-c0cd7ccc76c6)
+![image](https://github.com/user-attachments/assets/cdf5c00e-f582-46be-87a4-21f8367ebe23)
 
-![image](https://github.com/user-attachments/assets/f0726457-bff8-4984-b4ac-cf1dca042541)
+![image](https://github.com/user-attachments/assets/009c4537-32f6-4a54-be6b-90cf2db5a979)
+
+![image](https://github.com/user-attachments/assets/26464042-4f0d-495c-80df-10b2de7a9e8b)
+
+![image](https://github.com/user-attachments/assets/30451270-f325-4ef2-8e70-0fc0d51914f1)
+
+![image](https://github.com/user-attachments/assets/f84968bc-ac16-405a-83f3-57d97bd26395)
+
+![image](https://github.com/user-attachments/assets/366be82d-12f8-4247-9a39-010b44b4f290)
+
+![image](https://github.com/user-attachments/assets/cba68090-12c3-4011-a986-b9f09bc8fcfb)
+
+![image](https://github.com/user-attachments/assets/8a4df28f-8849-4b21-86bf-c8f7cb4a74df)
 
 
 ## 🛠️ Tecnologías Utilizadas
