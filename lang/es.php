@@ -139,23 +139,30 @@ $translations = [
     'remove' => 'Eliminar',
 
     // process_order.php
-    'address_saved' => 'Dirección guardada correctamente.',
     'order_summary' => 'Resumen del Pedido',
+    'address_saved' => 'Dirección guardada correctamente.',
     'cart_empty' => 'Tu carrito está vacío.',
     'delivery_fee' => 'Cargo por envío a domicilio',
     'total' => 'Total',
     'delivery_method' => 'Método de entrega',
-    'select_method' => 'Selecciona método',
+    'select_method' => '-- Selecciona método --',
     'home_delivery' => 'A domicilio',
     'pickup_restaurant' => 'Recoger en restaurante',
     'registered_address' => 'Dirección registrada',
-    'delivery_time_info' => 'Su pedido a domicilio llegará aproximadamente 30-45 minutos después de realizar el pago.',
+    'delivery_time_info' => 'Su pedido a domicilio llegará aproximadamente 40 minutos después de realizar el pago.',
     'change_address' => 'Cambiar dirección',
     'enter_new_address' => 'Introduce nueva dirección',
     'enter_address' => 'Introduce tu dirección',
     'save_address' => 'Guardar dirección',
     'restaurant_address' => 'Dirección del restaurante',
     'pickup_time_info' => 'Su pedido estará listo para recoger aproximadamente 20 minutos después de realizar el pago.',
+    'pay' => 'Pagar',
+
+    // payment.php:
+    'payment_title' => 'Pago',
+    'card_number' => 'Número de tarjeta',
+    'card_name' => 'Nombre del titular',
+    'payment_validation_error' => 'Por favor, completa los datos correctamente.',
     'pay' => 'Pagar',
 
     // process_payment.php

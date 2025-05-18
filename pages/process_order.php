@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $message = '';
 
-// Procesar formulario
+// Process form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delivery_method'])) {
         $_SESSION['delivery_method'] = $_POST['delivery_method'];
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_address = trim($_POST['new_address']);
         $stmt = $pdo->prepare("UPDATE users SET address = ? WHERE id = ?");
         $stmt->execute([$new_address, $user_id]);
-        $message = 'Dirección guardada correctamente.';
+        $message = $translations['address_saved'];
     }
 
     if (isset($_POST['proceed_payment'])) {
@@ -54,57 +54,57 @@ $total_with_fee = $total + $delivery_fee;
 ?>
 
 <main class="order-summary">
-    <h1>Resumen del Pedido</h1>
+    <h1><?= $translations['order_summary'] ?></h1>
 
     <?php if ($message): ?>
         <p style="color: green; font-weight: bold;"><?= htmlspecialchars($message) ?></p>
     <?php endif; ?>
 
     <?php if (empty($cart)): ?>
-        <p>Tu carrito está vacío.</p>
+        <p><?= $translations['cart_empty'] ?></p>
     <?php else: ?>
         <ul>
             <?php foreach ($cart as $item): ?>
                 <li>
-                    <strong><?= htmlspecialchars($item['name']) ?></strong> - 
+                    <strong><?= htmlspecialchars($item['name']) ?></strong> -
                     <?= $item['quantity'] ?> x <?= number_format($item['price'], 2) ?> € = <?= number_format($item['price'] * $item['quantity'], 2) ?> €
                 </li>
             <?php endforeach; ?>
         </ul>
 
-        <p><strong>Cargo por envío a domicilio:</strong> <span id="deliveryFee"><?= $delivery_fee > 0 ? number_format($delivery_fee, 2) . ' €' : '0.00 €' ?></span></p>
-        <p><strong>Total:</strong> <span id="totalPrice"><?= number_format($total_with_fee, 2) ?> €</span></p>
+        <p><strong><?= $translations['delivery_fee'] ?>:</strong> <span id="deliveryFee"><?= $delivery_fee > 0 ? number_format($delivery_fee, 2) . ' €' : '0.00 €' ?></span></p>
+        <p><strong><?= $translations['total'] ?>:</strong> <span id="totalPrice"><?= number_format($total_with_fee, 2) ?> €</span></p>
 
         <form method="POST" id="deliveryForm" action="">
-            <label for="delivery_method">Método de entrega:</label>
+            <label for="delivery_method"><?= $translations['delivery_method'] ?>:</label>
             <select name="delivery_method" id="delivery_method" onchange="updateTotals()" required>
-                <option value="" <?= $delivery_method === null ? 'selected' : '' ?>>-- Selecciona método --</option>
-                <option value="domicilio" <?= $delivery_method === 'domicilio' ? 'selected' : '' ?>>A domicilio</option>
-                <option value="recoger" <?= $delivery_method === 'recoger' ? 'selected' : '' ?>>Recoger en restaurante</option>
+                <option value="" <?= $delivery_method === null ? 'selected' : '' ?>><?= $translations['select_method'] ?></option>
+                <option value="domicilio" <?= $delivery_method === 'domicilio' ? 'selected' : '' ?>><?= $translations['home_delivery'] ?></option>
+                <option value="recoger" <?= $delivery_method === 'recoger' ? 'selected' : '' ?>><?= $translations['pickup_restaurant'] ?></option>
             </select>
 
             <div id="address-section" style="<?= $delivery_method === 'domicilio' ? 'display:block;' : 'display:none;' ?>">
                 <?php if (!empty($user['address'])): ?>
-                    <p><strong>Dirección registrada:</strong> <?= htmlspecialchars($user['address']) ?></p>
-                    <p><strong>Su pedido a domicilio llegará aproximadamente 30-45 minutos después de realizar el pago.</strong></p>
-                    <label for="new_address">Cambiar dirección:</label>
-                    <input type="text" name="new_address" id="new_address" placeholder="Introduce nueva dirección">
+                    <p><strong><?= $translations['registered_address'] ?>:</strong> <?= htmlspecialchars($user['address']) ?></p>
+                    <p><strong><?= $translations['delivery_time_info'] ?></strong></p>
+                    <label for="new_address"><?= $translations['change_address'] ?>:</label>
+                    <input type="text" name="new_address" id="new_address" placeholder="<?= $translations['enter_new_address'] ?>">
 
-                    <button type="submit" name="save_address" class="btn-menu" style="margin-top: 10px;">Guardar dirección</button>
+                    <button type="submit" name="save_address" class="btn-menu" style="margin-top: 10px;"><?= $translations['save_address'] ?></button>
                 <?php else: ?>
-                    <label for="new_address">Introduce tu dirección:</label>
+                    <label for="new_address"><?= $translations['enter_address'] ?>:</label>
                     <input type="text" name="new_address" id="new_address" required>
 
-                    <button type="submit" name="save_address" class="btn-menu" style="margin-top: 10px;">Guardar dirección</button>
+                    <button type="submit" name="save_address" class="btn-menu" style="margin-top: 10px;"><?= $translations['save_address'] ?></button>
                 <?php endif; ?>
             </div>
 
             <div id="pickup-section" style="<?= $delivery_method === 'recoger' ? 'display:block;' : 'display:none;' ?>">
-                <p><strong>Dirección del restaurante:</strong> C. Ana Benítez, 15, 35014 Las Palmas</p>
-                <p><strong>Su pedido estará listo para recoger aproximadamente 20 minutos después de realizar el pago.</strong></p>
+                <p><strong><?= $translations['restaurant_address'] ?>:</strong> C. Ana Benítez, 15, 35014 Las Palmas</p>
+                <p><strong><?= $translations['pickup_time_info'] ?></strong></p>
             </div>
 
-            <button type="submit" name="proceed_payment" class="btn-menu" style="margin-top: 20px;">Pagar</button>
+            <button type="submit" name="proceed_payment" class="btn-menu" style="margin-top: 20px;"><?= $translations['pay'] ?></button>
         </form>
     <?php endif; ?>
 </main>
