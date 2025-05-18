@@ -12,6 +12,7 @@ function setLanguageCookie($lang) {
 if(isset($_GET['lang'])) {
     setLanguageCookie($_GET['lang']);
     header('Location: '.$_SERVER['PHP_SELF']);
+    exit();
 }
 
 $currentLang = 'es';

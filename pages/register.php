@@ -3,94 +3,88 @@ include '../includes/header.php';
 include '../cart/cart.php';
 require '../includes/database.php';
 
-$mostrarFormulario = true;
-$errores = [];
-$nombre = '';
+$showForm = true;
+$errors = [];
+$name = '';
 $email = '';
-$telefono = '';
+$phone = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = trim($_POST['name'] ?? '');
+    $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
-    $telefono = trim($_POST['phone'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirm = $_POST['confirm_password'] ?? '';
 
-    // Validaciones
-    if (empty($nombre) || empty($email) || empty($telefono) || empty($password) || empty($confirm)) {
-        $errores[] = "Todos los campos son obligatorios.";
+    if (empty($name) || empty($email) || empty($phone) || empty($password) || empty($confirm)) {
+        $errors[] = $translations['register_error_all_fields'];
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errores[] = "Correo electrónico inválido.";
+        $errors[] = $translations['register_error_invalid_email'];
     }
 
-    if (!preg_match('/^\d{9}$/', $telefono)) {
-        $errores[] = "Teléfono debe tener 9 dígitos.";
+    if (!preg_match('/^\d{9}$/', $phone)) {
+        $errors[] = $translations['register_error_phone_digits'];
     }
 
     if ($password !== $confirm) {
-        $errores[] = "Las contraseñas no coinciden.";
+        $errors[] = $translations['register_error_password_mismatch'];
     }
 
     if (strlen($password) < 8 || !preg_match('/\d/', $password)) {
-        $errores[] = "La contraseña debe tener al menos 8 caracteres y contener al menos 1 número.";
+        $errors[] = $translations['register_error_password_format'];
     }
 
-    // Verificar email y teléfono únicos
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ? OR phone = ?");
-    $stmt->execute([$email, $telefono]);
-    $existe = $stmt->fetchColumn();
+    $stmt->execute([$email, $phone]);
+    $exists = $stmt->fetchColumn();
 
-    if ($existe > 0) {
-        $errores[] = "El correo o teléfono ya está registrado.";
+    if ($exists > 0) {
+        $errors[] = $translations['register_error_exists'];
     }
 
-    // Si no hay errores, registrar usuario
-    if (empty($errores)) {
+    if (empty($errors)) {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nombre, $email, $telefono, $hashed]);
-        $mostrarFormulario = false;
+        $stmt->execute([$name, $email, $phone, $hashed]);
+        $showForm = false;
     }
 }
 ?>
 
 <main class="form-page-container">
     <div class="form-container">
-        <h2>Registro</h2>
-        <?php
-        // Mostrar errores si hay
-        if (!empty($errores)) {
+        <h2><?= $translations['register_title'] ?></h2>
+        <?php if (!empty($errors)) {
             echo "<ul style='color:red; text-align:left;'>";
-            foreach ($errores as $error) {
+            foreach ($errors as $error) {
                 echo "<li>" . htmlspecialchars($error) . "</li>";
             }
             echo "</ul>";
         }
 
-        // Mostrar formulario si corresponde
-        if ($mostrarFormulario) { ?>
+        if ($showForm) { ?>
             <form method="POST">
-                <label>Nombre completo:</label>
-                <input type="text" name="name" value="<?= htmlspecialchars($nombre) ?>" required>
+                <label><?= $translations['register_name'] ?>:</label>
+                <input type="text" name="name" value="<?= htmlspecialchars($name) ?>" required>
 
-                <label>Correo electrónico:</label>
+                <label><?= $translations['register_email'] ?>:</label>
                 <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
 
-                <label>Teléfono móvil:</label>
-                <input type="text" name="phone" value="<?= htmlspecialchars($telefono) ?>" required>
+                <label><?= $translations['register_phone'] ?>:</label>
+                <input type="text" name="phone" value="<?= htmlspecialchars($phone) ?>" required>
 
-                <label>Contraseña:</label>
+                <label><?= $translations['register_password'] ?>:</label>
                 <input type="password" name="password" required>
 
-                <label>Repetir contraseña:</label>
+                <label><?= $translations['register_confirm_password'] ?>:</label>
                 <input type="password" name="confirm_password" required>
 
-                <button type="submit">Registrarse</button>
+                <button type="submit"><?= $translations['register_button'] ?></button>
             </form>
         <?php } else { ?>
-            <p style='color:white; text-align:center;'>Usuario registrado correctamente. <a href='login.php' style='color:red;'>Inicia sesión</a>.</p>
+            <p style='color:white; text-align:center;'><?= $translations['register_success'] ?> <a href='login.php' style='color:red;'><?= $translations['register_login_link'] ?></a>.</p>
         <?php } ?>    
     </div>
 </main>

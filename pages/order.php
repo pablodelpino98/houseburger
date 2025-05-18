@@ -30,7 +30,7 @@ function renderOrderCategory($pdo, $category, $title) {
                 <img src='../assets/images/$image' alt='$name'>
                 <h3>$name</h3>
                 <span class='price'>{$price} €</span>
-                <button class='btn-menu add-to-cart'>Añadir al carrito</button>
+                <button class='btn-menu add-to-cart'>{$GLOBALS['translations']['add_to_cart']}</button>
               </div>";
     }
     echo "</div>";
@@ -39,14 +39,14 @@ function renderOrderCategory($pdo, $category, $title) {
 
 <main class="menu-page-container">
     <div class="menu-content">
-        <h1>Realiza tu pedido</h1>
+        <h1><?= $translations['place_order'] ?? 'Place Your Order' ?></h1>
 
         <?php
-        renderOrderCategory($pdo, 'hamburguesa', 'Hamburguesas');
-        renderOrderCategory($pdo, 'papas', 'Papas Fritas');
-        renderOrderCategory($pdo, 'nachos', 'Nachos');
-        renderOrderCategory($pdo, 'refresco', 'Refrescos');
-        renderOrderCategory($pdo, 'cerveza', 'Cervezas');
+        renderOrderCategory($pdo, 'hamburguesa', $translations['hamburgers'] ?? 'Burgers');
+        renderOrderCategory($pdo, 'papas', $translations['fries'] ?? 'Fries');
+        renderOrderCategory($pdo, 'nachos', $translations['nachos'] ?? 'Nachos');
+        renderOrderCategory($pdo, 'refresco', $translations['soft_drinks'] ?? 'Soft Drinks');
+        renderOrderCategory($pdo, 'cerveza', $translations['beers'] ?? 'Beers');
         ?>
     </div>
 </main>
@@ -54,20 +54,20 @@ function renderOrderCategory($pdo, $category, $title) {
 <!-- Modal para combos de hamburguesa -->
 <div id="modal" class="modal-overlay" style="display: none;">
   <div class="modal-content">
-    <p id="modal-message">¿Desea añadir Papas Fritas Clásicas y un refresco por 2,99€?</p>
+    <p id="modal-message"><?= $translations['combo_question'] ?? 'Would you like to add Classic Fries and a soft drink for €2.99?' ?></p>
 
     <select id="refrescoSelect" style="display: none;">
       <option value="Coca-Cola">Coca-Cola</option>
       <option value="Coca-Cola ZERO">Coca-Cola ZERO</option>
-      <option value="Fanta Naranja">Fanta Naranja</option>
+      <option value="Fanta Naranja">Fanta Orange</option>
     </select>
 
     <div id="modal-buttons">
-      <button id="confirmCombo">Sí, añadir combo</button><br>
-      <button id="cancelCombo">No, solo hamburguesa</button>
+      <button id="confirmCombo"><?= $translations['yes_add_combo'] ?? 'Yes, add combo' ?></button><br>
+      <button id="cancelCombo"><?= $translations['no_only_burger'] ?? 'No, just the burger' ?></button>
     </div>
 
-    <button id="closeModal" style="display:none;">Cerrar</button>
+    <button id="closeModal" style="display:none;"><?= $translations['close'] ?? 'Close' ?></button>
   </div>
 </div>
 

@@ -1,7 +1,163 @@
 <?php
 $translations = [
-    'title' => 'Burger House',
-    'login' => 'Login',
+    // header.php
+    'lang_code' => 'en',
+    'title' => 'House Burger',
+    'home' => 'Home',
+    'menu' => 'Menu',
+    'my_account' => 'My Account',
+    'my_orders' => 'My Orders',
     'logout' => 'Logout',
-    'cart_empty' => 'Please login to use the cart',
+    'login' => 'Login',
+
+    // footer.php
+    'contact' => 'Contact',
+    'phone' => 'Phone',
+    'all_rights_reserved' => 'All rights reserved.',
+
+    // cart.php
+    'cart' => 'Cart',
+    'cart_empty' => 'The cart is empty.',
+    'remove' => 'Remove',
+    'total' => 'Total',
+    'clear_cart' => 'Clear cart',
+    'checkout' => 'Proceed to checkout',
+    'login_to_use_cart' => 'Please log in to use the cart',
+
+    // index.php
+    'welcome' => 'Welcome to',
+    'hero_title' => 'The most authentic burgers in town',
+    'hero_subtitle' => 'Serving mouth-watering flavors since 2010',
+    'view_menu' => 'See our menu',
+    'feature_1_title' => '100% natural ingredients',
+    'feature_1_desc' => 'Top-quality beef, fresh veggies, and artisan bread made daily',
+    'feature_2_title' => 'Our secret recipe',
+    'feature_2_desc' => 'Homemade sauces and a unique spice blend that makes all the difference',
+    'feature_3_title' => 'Eco-friendly commitment',
+    'feature_3_desc' => 'Biodegradable packaging and local suppliers to reduce our footprint',
+    'testimonials_title' => 'What our customers say',
+    'testimonial_1' => '"The best burgers I’ve ever had. Juicy meat and fresh ingredients make all the difference."',
+    'testimonial_2' => '"Amazing atmosphere and flawless service. My kids ask to come every weekend."',
+    'cta_title' => 'Ready for a unique dining experience?',
+    'cta_button' => 'See full menu',
+    'cta_call' => 'Or if you prefer, call us at',
+
+    // account.php
+    'account_title' => 'My Account',
+    'name' => 'Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'edit_account' => 'Edit account details',
+
+    // edit_account.php
+    'edit_account' => 'Edit account details',
+    'save_changes' => 'Save Changes',
+    'all_fields_required' => 'All fields are required.',
+    'name_invalid' => 'Name must contain at least one letter.',
+    'email_invalid' => 'Email address is not valid.',
+    'phone_invalid' => 'Phone number must be exactly 9 digits.',
+
+    // last_orders.php
+    'my_orders' => 'My Orders',
+    'no_orders_yet' => 'You have no orders yet.',
+    'see_menu' => 'See Menu',
+    'order' => 'Order',
+    'date' => 'Date',
+    'method' => 'Method',
+    'home_delivery' => 'Home delivery',
+    'pickup_store' => 'Pick up in store',
+    'address' => 'Address',
+    'product' => 'Product',
+    'quantity' => 'Quantity',
+    'price' => 'Price',
+    'combo' => 'COMBO',
+    'order_total' => 'Order total',
+    'previous' => 'Previous',
+    'next' => 'Next',
+
+    // login.php
+    'login_title' => 'Login',
+    'login_email' => 'Email',
+    'login_password' => 'Password',
+    'login_button' => 'Login',
+    'login_no_account' => "Don't have an account?",
+    'login_register_link' => 'Register here',
+
+    // register.php
+    'register_title' => 'Register',
+    'register_name' => 'Full Name',
+    'register_email' => 'Email Address',
+    'register_phone' => 'Phone Number',
+    'register_password' => 'Password',
+    'register_confirm_password' => 'Repeat Password',
+    'register_button' => 'Register',
+    'register_success' => 'User successfully registered.',
+    'register_login_link' => 'Log in',
+
+    'register_error_all_fields' => 'All fields are required.',
+    'register_error_invalid_email' => 'Invalid email address.',
+    'register_error_phone_digits' => 'Phone number must be 9 digits.',
+    'register_error_password_mismatch' => 'Passwords do not match.',
+    'register_error_password_format' => 'Password must be at least 8 characters long and contain a number.',
+    'register_error_exists' => 'The email or phone number is already registered.',
+
+    // menu.php
+    'menu_title' => 'Our Menu',
+    'order_button' => 'Place Order',
+    'hamburgers' => 'Burgers',
+    'price_note' => 'Price does not include fries or drinks. You can add Classic Fries and a soft drink for an extra €2.99',
+    'fries' => 'Fries',
+    'nachos' => 'Nachos',
+    'soft_drinks' => 'Soft Drinks',
+    'beers' => 'Beers',
+
+    // order.php
+    'place_order' => 'Place Your Order',
+    'add_to_cart' => 'Add to Cart',
+    'hamburgers' => 'Burgers',
+    'fries' => 'Fries',
+    'nachos' => 'Nachos',
+    'soft_drinks' => 'Soft Drinks',
+    'beers' => 'Beers',
+    'combo_question' => 'Would you like to add Classic Fries and a soft drink for €2.99?',
+    'yes_add_combo' => 'Yes, add combo',
+    'no_only_burger' => 'No, just the burger',
+    'close' => 'Close',
+
+    // process_order.php
+    'address_saved' => 'Address saved successfully.',
+    'order_summary' => 'Order Summary',
+    'cart_empty' => 'Your cart is empty.',
+    'delivery_fee' => 'Delivery fee',
+    'total' => 'Total',
+    'delivery_method' => 'Delivery method',
+    'select_method' => 'Select method',
+    'home_delivery' => 'Home delivery',
+    'pickup_restaurant' => 'Pick up at restaurant',
+    'registered_address' => 'Registered address',
+    'delivery_time_info' => 'Your home delivery will arrive approximately 30-45 minutes after payment.',
+    'change_address' => 'Change address',
+    'enter_new_address' => 'Enter new address',
+    'enter_address' => 'Enter your address',
+    'save_address' => 'Save address',
+    'restaurant_address' => 'Restaurant address',
+    'pickup_time_info' => 'Your order will be ready to pick up approximately 20 minutes after payment.',
+    'pay' => 'Pay',
+
+    // process_payment.php
+    'processing_payment' => 'Processing your payment',
+    'payment_accepted_redirect' => 'Payment accepted. Redirecting to confirmation...',
+    'please_wait' => 'Please wait a moment...',
+
+    // pay_complete.php
+    'error_order_not_found' => 'Error: Order not found.',
+    'order_will_arrive' => 'You will receive your order at',
+    'order_will_be_ready' => 'Your order will be ready at',
+    'approximately' => 'approximately.',
+    'order_completed' => 'Your order has been completed',
+    'order_number' => 'Your order number is:',
+    'contact_restaurant' => 'You can contact the restaurant at',
+    'accept' => 'Accept',
 ];
+?>

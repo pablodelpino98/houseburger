@@ -1,8 +1,163 @@
 <?php
 $translations = [
-    'title' => 'Burger House',
-    'login' => 'Iniciar Sesión',
+    // header.php
+    'lang_code' => 'es',
+    'title' => 'House Burger',
+    'home' => 'Inicio',
+    'menu' => 'Carta',
+    'my_account' => 'Mi Cuenta',
+    'my_orders' => 'Mis Pedidos',
     'logout' => 'Cerrar Sesión',
-    'cart_empty' => 'Inicie sesión para usar el carrito',
-    // Agrega más traducciones necesarias aquí
+    'login' => 'Iniciar Sesión',
+
+    // footer.php
+    'contact' => 'Contacto',
+    'phone' => 'Teléfono',
+    'all_rights_reserved' => 'Todos los derechos reservados.',
+
+    // cart.php
+    'cart' => 'Carrito',
+    'cart_empty' => 'El carrito está vacío.',
+    'remove' => 'Eliminar',
+    'total' => 'Total',
+    'clear_cart' => 'Vaciar carrito',
+    'checkout' => 'Tramitar pedido',
+    'login_to_use_cart' => 'Inicie sesión para usar el carrito',
+
+    // index.php
+    'welcome' => 'Bienvenidos a',
+    'hero_title' => 'Las hamburguesas más auténticas de la ciudad',
+    'hero_subtitle' => 'Desde 2010 sirviendo sabores que enamoran',
+    'view_menu' => 'Ver nuestra carta',
+    'feature_1_title' => 'Ingredientes 100% naturales',
+    'feature_1_desc' => 'Carne de primera calidad, vegetales frescos y pan artesano hecho diariamente',
+    'feature_2_title' => 'Nuestra receta secreta',
+    'feature_2_desc' => 'Salsas caseras y mezcla de especias exclusiva que hacen la diferencia',
+    'feature_3_title' => 'Compromiso ecológico',
+    'feature_3_desc' => 'Envases biodegradables y proveedores locales para reducir nuestra huella',
+    'testimonials_title' => 'Lo que dicen nuestros clientes',
+    'testimonial_1' => '"Las mejores hamburguesas que he probado. La carne es jugosa y los ingredientes frescos hacen toda la diferencia."',
+    'testimonial_2' => '"El ambiente es increíble y el servicio impecable. Mis hijos piden venir todos los fines de semana."',
+    'cta_title' => '¿Listo para una experiencia gastronómica única?',
+    'cta_button' => 'Ver menú completo',
+    'cta_call' => 'O si prefieres, llámanos al',
+
+    // account.php
+    'account_title' => 'Mi Cuenta',
+    'name' => 'Nombre',
+    'email' => 'Email',
+    'phone' => 'Teléfono',
+    'address' => 'Dirección',
+    'edit_account' => 'Editar datos de la cuenta',
+
+    // edit_account.php
+    'edit_account' => 'Editar datos de la cuenta',
+    'save_changes' => 'Guardar Cambios',
+    'all_fields_required' => 'Todos los campos son obligatorios.',
+    'name_invalid' => 'El nombre debe contener al menos una letra.',
+    'email_invalid' => 'El correo electrónico no es válido.',
+    'phone_invalid' => 'El número de teléfono debe tener exactamente 9 dígitos.',
+
+    // last_orders.php
+    'my_orders' => 'Mis Pedidos',
+    'no_orders_yet' => 'No tienes pedidos aún.',
+    'see_menu' => 'Ver Menú',
+    'order' => 'Pedido',
+    'date' => 'Fecha',
+    'method' => 'Método',
+    'home_delivery' => 'Envío a domicilio',
+    'pickup_store' => 'Recoger en tienda',
+    'address' => 'Dirección',
+    'product' => 'Producto',
+    'quantity' => 'Cantidad',
+    'price' => 'Precio',
+    'combo' => 'COMBO',
+    'order_total' => 'Total del pedido',
+    'previous' => 'Anterior',
+    'next' => 'Siguiente',
+
+    // login.php
+    'login_title' => 'Iniciar sesión',
+    'login_email' => 'Correo electrónico',
+    'login_password' => 'Contraseña',
+    'login_button' => 'Entrar',
+    'login_no_account' => '¿No tienes cuenta?',
+    'login_register_link' => 'Regístrate aquí',
+
+    // register.php
+    'register_title' => 'Registro',
+    'register_name' => 'Nombre completo',
+    'register_email' => 'Correo electrónico',
+    'register_phone' => 'Teléfono',
+    'register_password' => 'Contraseña',
+    'register_confirm_password' => 'Repetir contraseña',
+    'register_button' => 'Registrarse',
+    'register_success' => 'Usuario registrado correctamente.',
+    'register_login_link' => 'Iniciar sesión',
+
+    'register_error_all_fields' => 'Todos los campos son obligatorios.',
+    'register_error_invalid_email' => 'Correo electrónico no válido.',
+    'register_error_phone_digits' => 'El teléfono debe tener 9 dígitos.',
+    'register_error_password_mismatch' => 'Las contraseñas no coinciden.',
+    'register_error_password_format' => 'La contraseña debe tener al menos 8 caracteres y un número.',
+    'register_error_exists' => 'El correo o teléfono ya está registrado.',
+
+    // menu.php
+    'menu_title' => 'Nuestra Carta',
+    'order_button' => 'Realizar pedido',
+    'hamburgers' => 'Hamburguesas',
+    'price_note' => 'El precio no incluye papas ni bebidas. Puede añadir Papas fritas clásicas y un refresco por un suplemento de 2.99€',
+    'fries' => 'Papas fritas',
+    'nachos' => 'Nachos',
+    'soft_drinks' => 'Refrescos',
+    'beers' => 'Cervezas',
+
+    // order.php
+    'place_order' => 'Realiza tu pedido',
+    'add_to_cart' => 'Añadir al carrito',
+    'hamburgers' => 'Hamburguesas',
+    'fries' => 'Papas Fritas',
+    'nachos' => 'Nachos',
+    'soft_drinks' => 'Refrescos',
+    'beers' => 'Cervezas',
+    'combo_question' => '¿Desea añadir Papas Fritas Clásicas y un refresco por 2,99€?',
+    'yes_add_combo' => 'Sí, añadir combo',
+    'no_only_burger' => 'No, solo hamburguesa',
+    'close' => 'Cerrar',
+
+    // process_order.php
+    'address_saved' => 'Dirección guardada correctamente.',
+    'order_summary' => 'Resumen del Pedido',
+    'cart_empty' => 'Tu carrito está vacío.',
+    'delivery_fee' => 'Cargo por envío a domicilio',
+    'total' => 'Total',
+    'delivery_method' => 'Método de entrega',
+    'select_method' => 'Selecciona método',
+    'home_delivery' => 'A domicilio',
+    'pickup_restaurant' => 'Recoger en restaurante',
+    'registered_address' => 'Dirección registrada',
+    'delivery_time_info' => 'Su pedido a domicilio llegará aproximadamente 30-45 minutos después de realizar el pago.',
+    'change_address' => 'Cambiar dirección',
+    'enter_new_address' => 'Introduce nueva dirección',
+    'enter_address' => 'Introduce tu dirección',
+    'save_address' => 'Guardar dirección',
+    'restaurant_address' => 'Dirección del restaurante',
+    'pickup_time_info' => 'Su pedido estará listo para recoger aproximadamente 20 minutos después de realizar el pago.',
+    'pay' => 'Pagar',
+
+    // process_payment.php
+    'processing_payment' => 'Procesando su pago',
+    'payment_accepted_redirect' => 'Pago aceptado. Redirigiendo a la confirmación...',
+    'please_wait' => 'Por favor espere un momento...',
+
+    // pay_complete.php
+    'error_order_not_found' => 'Error: Pedido no encontrado.',
+    'order_will_arrive' => 'Recibirá su pedido a las',
+    'order_will_be_ready' => 'Su pedido estará listo a las',
+    'approximately' => 'aproximadamente.',
+    'order_completed' => 'Su pedido ha sido completado',
+    'order_number' => 'Su pedido es el número:',
+    'contact_restaurant' => 'Puede contactar con el restaurante en el',
+    'accept' => 'Aceptar',
 ];
+?>

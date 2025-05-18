@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header('Location: account.php');
         exit();
     } else {
-        $error = "Todos los campos son obligatorios.";
+        $error = $translations['all_fields_required'];
     }
 }
 
@@ -38,26 +38,28 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <div class="form-page-container">
     <div class="form-container">
-        <h2>Editar datos de la cuenta</h2>
+        <h2><?= $translations['edit_account'] ?></h2>
 
         <?php if (isset($error)): ?>
             <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
         <form method="post" action="edit_account.php">
-            <label>Nombre:</label>
-            <input type="text" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
+            <label><?= $translations['name'] ?>:</label>
+            <input type="text" name="name" value="<?= htmlspecialchars($user['name']); ?>" required>
 
-            <label>Email:</label>
-            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+            <label><?= $translations['email'] ?>:</label>
+            <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
 
-            <label>Teléfono:</label>
-            <input type="text" name="phone" value="<?php echo htmlspecialchars($user['phone']); ?>" required>
+            <label><?= $translations['phone'] ?>:</label>
+            <input type="text" name="phone" value="<?= htmlspecialchars($user['phone']); ?>" required>
 
-            <label>Dirección:</label>
-            <input type="text" name="address" value="<?php echo htmlspecialchars($user['address']); ?>" required>
+            <label><?= $translations['address'] ?>:</label>
+            <input type="text" name="address" value="<?= htmlspecialchars($user['address']); ?>" required>
 
-            <button type="submit" class="btn-menu btn-large" style="margin-top: 20px;">Guardar Cambios</button>
+            <button type="submit" class="btn-menu btn-large" style="margin-top: 20px;">
+                <?= $translations['save_changes'] ?>
+            </button>
         </form>
     </div>
 </div>

@@ -1,8 +1,7 @@
 <?php
 include '../includes/header.php';
 include '../cart/cart.php';
-include '../includes/database.php'; // Aquí se define $pdo (PDO)
-
+include '../includes/database.php';
 
 // Función para renderizar productos por categoría con PDO
 function renderCategory($pdo, $category, $title) {
@@ -33,17 +32,17 @@ function renderCategory($pdo, $category, $title) {
 
 <main class="menu-page-container">
     <div class="menu-content">
-        <h1>Nuestra Carta</h1>
-        <a href="order.php" class="order-button">Realizar pedido</a>
+        <h1><?= $translations['menu_title'] ?? 'Our Menu' ?></h1>
+        <a href="order.php" class="order-button"><?= $translations['order_button'] ?? 'Place Order' ?></a>
 
         <?php
-        renderCategory($pdo, 'hamburguesa', 'Hamburguesas');
-        echo "<br><p>El precio no incluye papas ni bebidas. Puede añadir Papas fritas clásicas y un refresco por un suplemento de 2.99€</p>";
+        renderCategory($pdo, 'hamburguesa', $translations['hamburgers'] ?? 'Burgers');
+        echo "<br><p>" . ($translations['price_note'] ?? 'Price does not include fries or drinks. You can add Classic Fries and a soft drink for an extra €2.99') . "</p>";
 
-        renderCategory($pdo, 'papas', 'Papas fritas');
-        renderCategory($pdo, 'nachos', 'Nachos');
-        renderCategory($pdo, 'refresco', 'Refrescos');
-        renderCategory($pdo, 'cerveza', 'Cervezas');
+        renderCategory($pdo, 'papas', $translations['fries'] ?? 'Fries');
+        renderCategory($pdo, 'nachos', $translations['nachos'] ?? 'Nachos');
+        renderCategory($pdo, 'refresco', $translations['soft_drinks'] ?? 'Soft Drinks');
+        renderCategory($pdo, 'cerveza', $translations['beers'] ?? 'Beers');
         ?>
     </div>
 </main>

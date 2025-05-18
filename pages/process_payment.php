@@ -2,6 +2,10 @@
 session_start();
 include '../includes/database.php';
 
+// Cargar idioma según la cookie
+$lang = $_COOKIE['lang'] ?? 'es';
+include "../lang/{$lang}.php";
+
 if (!isset($_SESSION['user_id']) || empty($_SESSION['cart'])) {
     header("Location: index.php");
     exit();
@@ -66,7 +70,6 @@ foreach ($_SESSION['cart'] as $item) {
     ]);
 }
 
-
 // Vaciar carrito
 $_SESSION['cart'] = [];
 ?>
@@ -76,7 +79,7 @@ $_SESSION['cart'] = [];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Procesando Pago</title>
+  <title><?= $translations['processing_payment'] ?? 'Procesando Pago' ?></title>
   <style>
     * {
       margin: 0;
@@ -142,11 +145,10 @@ $_SESSION['cart'] = [];
 </head>
 <body>
   <div class="processing-container">
-    <h1>Procesando su pago</h1>
-    <p class="processing-message">Pago aceptado. Redirigiendo a la confirmación...</p>
+    <h1><?= $translations['processing_payment'] ?? 'Procesando su pago' ?></h1>
+    <p class="processing-message"><?= $translations['payment_accepted_redirect'] ?? 'Pago aceptado. Redirigiendo a la confirmación...' ?></p>
     <div class="loading-spinner"></div>
-    <p>Por favor espere un momento...</p>
+    <p><?= $translations['please_wait'] ?? 'Por favor espere un momento...' ?></p>
   </div>
 </body>
-</html>
 </html>
