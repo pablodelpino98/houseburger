@@ -9,16 +9,17 @@ include 'database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><?= htmlspecialchars($translations['title'] ?? 'House Burger') ?></title>
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <script>
-        const translations = <?= json_encode($translations, JSON_UNESCAPED_UNICODE) ?>;
-    </script>
-
 </head>
 <body>
     <header class="header">
         <div class="header-container">
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <h1 class="logo"><a href="index.php">House Burger</a></h1>
+
+            <div>
+                <a href="index.php">
+                    <img src="../assets/images/logopng.png" alt="House Burger Logo" class="logo-img">
+                </a>
+            </div>
             
             <nav class="main-nav" id="mainNav">
                 <ul>
@@ -48,3 +49,4 @@ include 'database.php';
             </div>
         </div>
     </header>
+</body>

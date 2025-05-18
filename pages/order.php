@@ -72,15 +72,8 @@ function renderOrderCategory($pdo, $category, $title) {
 </div>
 
 <script>
-  const translations = {
-    combo_question: <?= json_encode($translations['combo_question'] ?? '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?') ?>,
-    yes_add_combo: <?= json_encode($translations['yes_add_combo'] ?? 'Sí, añadir combo') ?>,
-    no_only_burger: <?= json_encode($translations['no_only_burger'] ?? 'No, solo la hamburguesa') ?>,
-    close: <?= json_encode($translations['close'] ?? 'Cerrar') ?>,
-    added_to_cart: <?= json_encode($translations['added_to_cart'] ?? 'Añadido al carrito') ?>
-  };
+    const translations = <?= json_encode($translations, JSON_UNESCAPED_UNICODE) ?>;
 </script>
 <script src="../js/script.js"></script>
-
 
 <?php include '../includes/footer.php'; ?>
