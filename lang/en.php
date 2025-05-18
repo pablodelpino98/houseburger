@@ -128,6 +128,7 @@ $translations = [
     'yes_add_combo' => 'Yes, add combo',
     'no_only_burger' => 'No, just the burger',
     'close' => 'Close',
+    'added_to_cart' => 'Added to cart.',
 
     // process_order.php
     'address_saved' => 'Address saved successfully.',

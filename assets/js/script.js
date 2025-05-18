@@ -30,14 +30,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentProduct = null;
 
-  const showModal = () => {
+  const comboQuestion = translations.combo_question || '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?';
+  const yesAddCombo = translations.yes_add_combo || 'Sí, añadir combo';
+  const noOnlyBurger = translations.no_only_burger || 'No, solo la hamburguesa';
+  const closeText = translations.close || 'Cerrar';
+  const addedToCart = translations.added_to_cart || 'Añadido al carrito';
+
+  const showComboModal = () => {
     modal.classList.add('show');
     modal.style.display = 'flex';
     refrescoSelect.style.display = 'none';
     confirmComboBtn.style.display = 'inline-block';
     cancelComboBtn.style.display = 'inline-block';
     closeModalBtn.style.display = 'none';
-    modalMessage.textContent = '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?';
+    modalMessage.textContent = comboQuestion;
+    confirmComboBtn.textContent = yesAddCombo;
+    cancelComboBtn.textContent = noOnlyBurger;
+  };
+
+  const showAddedModal = (message) => {
+    modal.classList.add('show');
+    modal.style.display = 'flex';
+    refrescoSelect.style.display = 'none';
+    confirmComboBtn.style.display = 'none';
+    cancelComboBtn.style.display = 'none';
+    closeModalBtn.style.display = 'inline-block';
+    modalMessage.textContent = message;
+    closeModalBtn.textContent = closeText;
   };
 
   const closeModal = () => {
@@ -46,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentProduct = null;
   };
 
-  const addToCart = (product) => {
+  const addToCart = (product, showMessage = true) => {
     fetch('../cart/add_to_cart.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -55,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(res => res.json())
       .then(() => {
         renderCart();
+        if (showMessage) {
+          showAddedModal(addedToCart);
+        }
       })
       .catch(err => console.error('Error al añadir al carrito:', err));
   };
@@ -71,38 +93,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
       currentProduct = product;
 
-      product.type === 'hamburguesa' ? showModal() : addToCart(product);
+      if (product.type === 'hamburguesa') {
+        showComboModal();
+      } else {
+        addToCart(product);
+      }
     });
   });
 
   cancelComboBtn.addEventListener('click', () => {
-    addToCart(currentProduct);
-    modalMessage.textContent = 'Añadido al carrito';
-    refrescoSelect.style.display = 'none';
-    confirmComboBtn.style.display = 'none';
-    cancelComboBtn.style.display = 'none';
-    closeModalBtn.style.display = 'inline-block';
+    addToCart(currentProduct, false);
+    showAddedModal(addedToCart);
   });
 
   confirmComboBtn.addEventListener('click', () => {
     if (refrescoSelect.style.display === 'none') {
       refrescoSelect.style.display = 'inline-block';
-      modalMessage.textContent = 'Seleccione el refresco para tu combo y confirma:';
-      confirmComboBtn.textContent = 'Añadir combo';
+      modalMessage.textContent = translations['select_soft_drink'] || 'Seleccione el refresco para tu combo y confirma:';
+      confirmComboBtn.textContent = yesAddCombo;
       cancelComboBtn.style.display = 'none';
     } else {
       const refresco = refrescoSelect.value;
       const combo = {
-        product_id: currentProduct.product_id, // usa el mismo ID
+        product_id: currentProduct.product_id,
         name: `${currentProduct.name} + Papas Fritas Clásicas + ${refresco}`,
         price: currentProduct.price + 2.99,
         type: 'combo'
       };
-      addToCart(combo);
-      modalMessage.textContent = 'Añadido al carrito';
-      refrescoSelect.style.display = 'none';
-      confirmComboBtn.style.display = 'none';
-      closeModalBtn.style.display = 'inline-block';
+      addToCart(combo, false);
+      showAddedModal(addedToCart);
     }
   });
 
@@ -124,8 +143,8 @@ function renderCart() {
       if (!cartContent || !totalElement) return;
 
       if (cart.length === 0) {
-        cartContent.innerHTML = '<p>El carrito está vacío.</p>';
-        totalElement.textContent = 'Total: 0.00 €';
+        cartContent.innerHTML = `<p>${translations['cart_empty'] || 'El carrito está vacío.'}</p>`;
+        totalElement.textContent = `${translations['total'] || 'Total'}: 0.00 €`;
         if (cartDataInput) cartDataInput.value = '';
         return;
       }
@@ -139,13 +158,13 @@ function renderCart() {
         div.classList.add('cart-item');
         div.innerHTML = `
           <p><strong>${item.name}</strong> - ${item.quantity} x ${item.price.toFixed(2)} € = ${itemTotal.toFixed(2)} €</p>
-          <button onclick="removeFromCart(${index})">Eliminar</button>
+          <button onclick="removeFromCart(${index})">${translations['remove'] || 'Eliminar'}</button>
         `;
         cartContent.appendChild(div);
         total += itemTotal;
       });
 
-      totalElement.textContent = `Total: ${total.toFixed(2)} €`;
+      totalElement.textContent = `${translations['total'] || 'Total'}: ${total.toFixed(2)} €`;
       if (cartDataInput) cartDataInput.value = JSON.stringify(cart);
     })
     .catch(error => {

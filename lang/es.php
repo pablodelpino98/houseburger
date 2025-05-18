@@ -128,6 +128,15 @@ $translations = [
     'yes_add_combo' => 'Sí, añadir combo',
     'no_only_burger' => 'No, solo hamburguesa',
     'close' => 'Cerrar',
+    'added_to_cart' => 'Añadido al carrito',
+    'combo_question' => '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?',
+    'add_combo' => 'Añadir combo',
+    'select_drink' => 'Seleccione el refresco para tu combo y confirma:',
+    'added_to_cart' => 'Añadido al carrito',
+    'close' => 'Cerrar',
+    'empty_cart' => 'El carrito está vacío.',
+    'total' => 'Total:',
+    'remove' => 'Eliminar',
 
     // process_order.php
     'address_saved' => 'Dirección guardada correctamente.',

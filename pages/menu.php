@@ -12,9 +12,12 @@ function renderCategory($pdo, $category, $title) {
     echo "<h2>$title</h2>";
     echo "<div class='product-list'>";
 
+    $language = $_COOKIE['lang'] ?? 'es';
+    $desc_column = $language === 'en' ? 'description_en' : 'description';
+
     foreach ($products as $product) {
         $name = htmlspecialchars($product['name']);
-        $desc = htmlspecialchars($product['description']);
+        $desc = htmlspecialchars($product[$desc_column]);
         $price = number_format($product['price'], 2, ',', '.');
         $image = htmlspecialchars($product['image']);
 
@@ -23,9 +26,8 @@ function renderCategory($pdo, $category, $title) {
                 <h3>$name</h3>
                 <p>$desc</p>
                 <span class='price'>{$price} €</span>
-              </div>";
+            </div>";
     }
-
     echo "</div>";
 }
 ?>
