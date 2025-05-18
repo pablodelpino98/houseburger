@@ -17,6 +17,7 @@ CREATE TABLE products (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description TEXT,
+    description_en TEXT,
     price DECIMAL(10,2) NOT NULL,
     image VARCHAR(255),
     category VARCHAR(50) NOT NULL
@@ -47,24 +48,23 @@ CREATE TABLE order_details (
 
 
 -- INSERT--
-
-INSERT INTO products (name, description, price, image, category) VALUES
-('Hamburguesa Clásica', 'Carne de vacuno 100%, queso cheddar, lechuga, tomate, pepinillos y salsa especial.', 7.50, 'burger1.jpg', 'hamburguesa'),
-('Hamburguesa BBQ', 'Carne de vacuno 100% a la parrilla con salsa barbacoa, queso cheddar, bacon y cebolla caramelizada.', 8.90, 'burger2.jpg', 'hamburguesa'),
-('Hamburguesa Vegana', 'Hamburguesa vegetal, queso camembert, aguacate, tomate, rúcula y mayonesa vegana.', 7.80, 'burger3.jpg', 'hamburguesa'),
-('Hamburguesa Picante', 'Carne de vacuno 100%, jalapeños, queso pepper jack, lechuga y salsa chipotle picante.', 8.50, 'burger4.jpg', 'hamburguesa'),
-('Hamburguesa Doble Queso', 'Doble carne de vacuno 100%, doble queso cheddar, cebolla, kétchup y mostaza.', 9.20, 'burger5.jpg', 'hamburguesa'),
-('Hamburguesa con Huevo', 'Carne de vacuno 100%, queso suizo, bacon crujiente y huevo frito con mayonesa de ajo.', 8.70, 'burger6.jpg', 'hamburguesa'),
-('Papas Fritas Clásicas', 'Papas cortadas a mano, crujientes por fuera y suaves por dentro. Servidas con salsas clásicas.', 2.50, 'fries1.jpg', 'papas'),
-('Papas con Queso y Bacon', 'Una montaña de papas cubiertas con queso fundido y trocitos de bacon crujiente.', 3.90, 'fries2.jpg', 'papas'),
-('Nachos Supreme', 'Totopos de maíz con queso fundido, guacamole, jalapeños, crema agria y pico de gallo.', 4.50, 'nachos.jpg', 'nachos'),
-('Coca-cola (50CL)', '', 2.50, 'cocacola.jpg', 'refresco'),
-('Coca-cola ZERO (50CL)', '', 2.50, 'cocacola_zero.jpg', 'refresco'),
-('Fanta Naranja (50CL)', '', 2.50, 'fanta.jpg', 'refresco'),
-('Tropical (33CL)', '', 2.80, 'tropical.jpg', 'cerveza'),
-('Tropical 0,0% (33CL)', '', 2.80, 'tropical_zero.jpg', 'cerveza'),
-('Estrella Galicia (33CL)', '', 2.80, 'estrella.jpg', 'cerveza'),
-('Paulaner (33CL)', '', 3.60, 'paulaner.jpg', 'cerveza');
+INSERT INTO products (name, description, description_en, price, image, category) VALUES
+('Hamburguesa Clásica', 'Carne de vacuno 100%, queso cheddar, lechuga, tomate, pepinillos y salsa especial.', '100% beef patty, cheddar cheese, lettuce, tomato, pickles, and special sauce.', 7.50, 'burger1.jpg', 'hamburguesa'),
+('Hamburguesa BBQ', 'Carne de vacuno 100% a la parrilla con salsa barbacoa, queso cheddar, bacon y cebolla caramelizada.', '100% grilled beef patty with BBQ sauce, cheddar cheese, bacon, and caramelized onions.', 8.90, 'burger2.jpg', 'hamburguesa'),
+('Hamburguesa Vegana', 'Hamburguesa vegetal, queso camembert, aguacate, tomate, rúcula y mayonesa vegana.', 'Vegan patty, camembert cheese, avocado, tomato, arugula, and vegan mayo.', 7.80, 'burger3.jpg', 'hamburguesa'),
+('Hamburguesa Picante', 'Carne de vacuno 100%, jalapeños, queso pepper jack, lechuga y salsa chipotle picante.', '100% beef patty, jalapeños, pepper jack cheese, lettuce, and spicy chipotle sauce.', 8.50, 'burger4.jpg', 'hamburguesa'),
+('Hamburguesa Doble Queso', 'Doble carne de vacuno 100%, doble queso cheddar, cebolla, kétchup y mostaza.', 'Double 100% beef patties, double cheddar cheese, onion, ketchup, and mustard.', 9.20, 'burger5.jpg', 'hamburguesa'),
+('Hamburguesa con Huevo', 'Carne de vacuno 100%, queso suizo, bacon crujiente y huevo frito con mayonesa de ajo.', '100% beef patty, Swiss cheese, crispy bacon, fried egg, and garlic mayo.', 8.70, 'burger6.jpg', 'hamburguesa'),
+('Papas Fritas Clásicas', 'Papas cortadas a mano, crujientes por fuera y suaves por dentro. Servidas con salsas clásicas.', 'Hand-cut fries, crispy on the outside and soft inside. Served with classic sauces.', 2.50, 'fries1.jpg', 'papas'),
+('Papas con Queso y Bacon', 'Una montaña de papas cubiertas con queso fundido y trocitos de bacon crujiente.', 'A mountain of fries topped with melted cheese and crispy bacon bits.', 3.90, 'fries2.jpg', 'papas'),
+('Nachos Supreme', 'Totopos de maíz con queso fundido, guacamole, jalapeños, crema agria y pico de gallo.', 'Corn tortilla chips with melted cheese, guacamole, jalapeños, sour cream, and pico de gallo.', 4.50, 'nachos.jpg', 'nachos'),
+('Coca-cola (50CL)', '', '', 2.50, 'cocacola.jpg', 'refresco'),
+('Coca-cola ZERO (50CL)', '', '', 2.50, 'cocacola_zero.jpg', 'refresco'),
+('Fanta Naranja (50CL)', '', '', 2.50, 'fanta.jpg', 'refresco'),
+('Tropical (33CL)', '', '', 2.80, 'tropical.jpg', 'cerveza'),
+('Tropical 0,0% (33CL)', '', '', 2.80, 'tropical_zero.jpg', 'cerveza'),
+('Estrella Galicia (33CL)', '', '', 2.80, 'estrella.jpg', 'cerveza'),
+('Paulaner (33CL)', '', '', 3.60, 'paulaner.jpg', 'cerveza');
 
 
 -- Insertar usuario admin

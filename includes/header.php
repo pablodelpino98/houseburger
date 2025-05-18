@@ -9,6 +9,10 @@ include 'database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><?= htmlspecialchars($translations['title'] ?? 'House Burger') ?></title>
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script>
+        const translations = <?= json_encode($translations, JSON_UNESCAPED_UNICODE) ?>;
+    </script>
+
 </head>
 <body>
     <header class="header">
