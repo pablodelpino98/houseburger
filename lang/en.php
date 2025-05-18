@@ -83,6 +83,9 @@ $translations = [
     'login_button' => 'Login',
     'login_no_account' => "Don't have an account?",
     'login_register_link' => 'Register here',
+    'email_invalid' => 'Invalid email address.',
+    'password_required' => 'Password is required.',
+    'login_failed' => 'Incorrect email or password.',
 
     // register.php
     'register_title' => 'Register',
@@ -101,6 +104,7 @@ $translations = [
     'register_error_password_mismatch' => 'Passwords do not match.',
     'register_error_password_format' => 'Password must be at least 8 characters long and contain a number.',
     'register_error_exists' => 'The email or phone number is already registered.',
+    'register_error_name_format' => 'Name must contain at least 1 letter.',
 
     // menu.php
     'menu_title' => 'Our Menu',
