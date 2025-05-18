@@ -3,11 +3,11 @@ include 'auth.php';
 include 'database.php';
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?= $translations['lang_code'] ?? 'es' ?>">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title><?= $translations['title'] ?></title>
+    <title><?= htmlspecialchars($translations['title'] ?? 'House Burger') ?></title>
     <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 <body>
@@ -18,14 +18,14 @@ include 'database.php';
             
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="../pages/index.php">Inicio</a></li>
-                    <li><a href="../pages/menu.php">Carta</a></li>
+                    <li><a href="../pages/index.php"><?= htmlspecialchars($translations['home'] ?? 'Inicio') ?></a></li>
+                    <li><a href="../pages/menu.php"><?= htmlspecialchars($translations['menu'] ?? 'Carta') ?></a></li>
                     <?php if(isLoggedIn()): ?>
-                        <li><a href="../pages/account.php">Mi Cuenta</a></li>
-                        <li><a href="../pages/last_orders.php">Mis Pedidos</a></li>
-                        <li><a href="../logout.php">Cerrar Sesión</a></li>
+                        <li><a href="../pages/account.php"><?= htmlspecialchars($translations['my_account'] ?? 'Mi Cuenta') ?></a></li>
+                        <li><a href="../pages/last_orders.php"><?= htmlspecialchars($translations['my_orders'] ?? 'Mis Pedidos') ?></a></li>
+                        <li><a href="../logout.php"><?= htmlspecialchars($translations['logout'] ?? 'Cerrar Sesión') ?></a></li>
                     <?php else: ?>
-                        <li><a href="../pages/login.php">Iniciar Sesión</a></li>
+                        <li><a href="../pages/login.php"><?= htmlspecialchars($translations['login'] ?? 'Iniciar Sesión') ?></a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

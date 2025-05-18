@@ -21,7 +21,7 @@ $stmtCount->execute([$user_id]);
 $totalPedidos = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
 $totalPaginas = ceil($totalPedidos / $pedidosPorPagina);
 
-// SOLUCIÓN: Usar solo parámetros nombrados en la consulta
+// Consulta principal
 $sql = "
     SELECT 
         o.id AS order_id,
@@ -42,15 +42,13 @@ $sql = "
 ";
 
 $stmt = $pdo->prepare($sql);
-
-// Bind de parámetros como enteros (todos nombrados ahora)
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->bindValue(':limit', $pedidosPorPagina, PDO::PARAM_INT);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->execute();
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Agrupar por pedido
+// Agrupar pedidos
 $groupedOrders = [];
 foreach ($orders as $row) {
     $orderId = $row['order_id'];
@@ -74,43 +72,38 @@ foreach ($orders as $row) {
 
 <div class="form-page-container">
     <div class="orders-container">
-        <h2 style="color: #ffa600; margin-bottom: 30px; text-align: center;">Mis Pedidos</h2>
+        <h2 style="color: #ffa600; margin-bottom: 30px; text-align: center;"><?= $translations['my_orders'] ?></h2>
 
         <?php if (empty($groupedOrders)): ?>
             <div class="no-orders">
-                <p>No tienes pedidos aún.</p>
-                <a href="menu.php" class="btn-menu" style="margin-top: 20px; display: inline-block;">Ver Menú</a>
+                <p><?= $translations['no_orders_yet'] ?></p>
+                <a href="menu.php" class="btn-menu" style="margin-top: 20px; display: inline-block;"><?= $translations['see_menu'] ?></a>
             </div>
         <?php else: ?>
             <?php foreach ($groupedOrders as $orderId => $order): ?>
                 <div class="order-card">
                     <div class="order-header">
-                        <h3>Pedido #<?= $orderId ?></h3>
+                        <h3><?= $translations['order'] ?> #<?= $orderId ?></h3>
                         <div class="order-meta">
-                            <span>
-                                <strong>Fecha:</strong> 
-                                <?= date('d/m/Y H:i', strtotime($order['order_date'])) ?>
-                            </span>
-                            <span>
-                                <strong>Método:</strong> 
-                                <?= $order['delivery_method'] === 'domicilio' ? 'Envío a domicilio' : 'Recoger en tienda' ?>
+                            <span><strong><?= $translations['date'] ?>:</strong> <?= date('d/m/Y H:i', strtotime($order['order_date'])) ?></span>
+                            <span><strong><?= $translations['method'] ?>:</strong>
+                                <?= $order['delivery_method'] === 'domicilio' 
+                                    ? $translations['home_delivery'] 
+                                    : $translations['pickup_store'] ?>
                             </span>
                             <?php if ($order['delivery_method'] === 'domicilio'): ?>
-                                <span>
-                                    <strong>Dirección:</strong> 
-                                    <?= htmlspecialchars($order['delivery_address']) ?>
-                                </span>
+                                <span><strong><?= $translations['address'] ?>:</strong> <?= htmlspecialchars($order['delivery_address']) ?></span>
                             <?php endif; ?>
                         </div>
                     </div>
-                    
+
                     <div class="order-body">
                         <table class="products-table">
                             <thead>
                                 <tr>
-                                    <th>Producto</th>
-                                    <th style="text-align: center;">Cantidad</th>
-                                    <th style="text-align: right;">Precio</th>
+                                    <th><?= $translations['product'] ?></th>
+                                    <th style="text-align: center;"><?= $translations['quantity'] ?></th>
+                                    <th style="text-align: right;"><?= $translations['price'] ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -119,7 +112,7 @@ foreach ($orders as $row) {
                                         <td>
                                             <?= htmlspecialchars($item['product_name']) ?>
                                             <?php if ($item['is_combo']): ?>
-                                                <span class="combo-badge">COMBO</span>
+                                                <span class="combo-badge"><?= $translations['combo'] ?></span>
                                             <?php endif; ?>
                                         </td>
                                         <td style="text-align: center;"><?= $item['quantity'] ?></td>
@@ -128,9 +121,9 @@ foreach ($orders as $row) {
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        
+
                         <div class="order-total">
-                            <strong>Total del pedido:</strong> $<?= number_format($order['total'], 2) ?>
+                            <strong><?= $translations['order_total'] ?>:</strong> $<?= number_format($order['total'], 2) ?>
                         </div>
                     </div>
                 </div>
@@ -139,33 +132,32 @@ foreach ($orders as $row) {
             <!-- Paginación -->
             <div class="pagination" style="margin-top: 30px; display: flex; justify-content: center; gap: 10px;">
                 <?php if ($paginaActual > 1): ?>
-                    <a href="last_orders.php?pagina=<?= $paginaActual - 1 ?>" class="btn-menu" style="padding: 8px 16px;">&laquo; Anterior</a>
+                    <a href="last_orders.php?pagina=<?= $paginaActual - 1 ?>" class="btn-menu" style="padding: 8px 16px;">&laquo; <?= $translations['previous'] ?></a>
                 <?php endif; ?>
-                
+
                 <?php 
-                // Mostrar números de página (máximo 5 alrededor de la actual)
                 $inicio = max(1, $paginaActual - 2);
                 $fin = min($totalPaginas, $paginaActual + 2);
-                
+
                 if ($inicio > 1) {
                     echo '<a href="last_orders.php?pagina=1" class="btn-menu" style="padding: 8px 16px;">1</a>';
                     if ($inicio > 2) echo '<span style="padding: 8px 16px;">...</span>';
                 }
-                
+
                 for ($i = $inicio; $i <= $fin; $i++): ?>
                     <a href="last_orders.php?pagina=<?= $i ?>" class="btn-menu <?= $i == $paginaActual ? 'active' : '' ?>" style="padding: 8px 16px; <?= $i == $paginaActual ? 'background-color: #e69500;' : '' ?>">
                         <?= $i ?>
                     </a>
                 <?php endfor;
-                
+
                 if ($fin < $totalPaginas) {
                     if ($fin < $totalPaginas - 1) echo '<span style="padding: 8px 16px;">...</span>';
                     echo '<a href="last_orders.php?pagina='.$totalPaginas.'" class="btn-menu" style="padding: 8px 16px;">'.$totalPaginas.'</a>';
                 }
                 ?>
-                
+
                 <?php if ($paginaActual < $totalPaginas): ?>
-                    <a href="last_orders.php?pagina=<?= $paginaActual + 1 ?>" class="btn-menu" style="padding: 8px 16px;">Siguiente &raquo;</a>
+                    <a href="last_orders.php?pagina=<?= $paginaActual + 1 ?>" class="btn-menu" style="padding: 8px 16px;"><?= $translations['next'] ?> &raquo;</a>
                 <?php endif; ?>
             </div>
         <?php endif; ?>

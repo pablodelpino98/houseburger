@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['cart'])) {
     <div class="payment-form">
         <h1>Pago</h1>
         <form id="paymentForm" action="process_payment.php" method="POST">
-            <input type="hidden" name="delivery_method" value="<?= htmlspecialchars($_SESSION['delivery_method']) ?>">
+            
             <label for="card_number">Número de tarjeta:</label>
             <input type="text" id="card_number" name="card_number" maxlength="19" required>
 
