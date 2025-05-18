@@ -19,6 +19,21 @@ La aplicación utiliza cookies para gestionar el idioma de la interfaz de manera
 - Gestión dinámica del idioma mediante cookies.
 - Interfaz moderna, intuitiva y responsiva.
 
+## 📸 Capturas de Pantalla
+
+![image](https://github.com/user-attachments/assets/9a0ff947-4181-4a44-b9ef-0d0fe0c016b6)
+
+![image](https://github.com/user-attachments/assets/a874289d-d9c1-4f19-9ba6-ed2c39f7707d)
+
+![image](https://github.com/user-attachments/assets/a11b9179-c90f-4d2b-aad7-89815871f1f1)
+
+![image](https://github.com/user-attachments/assets/826e0785-2f8f-4c53-b899-917b92ec9972)
+
+![image](https://github.com/user-attachments/assets/719094d1-212e-463a-a38d-c0cd7ccc76c6)
+
+![image](https://github.com/user-attachments/assets/f0726457-bff8-4984-b4ac-cf1dca042541)
+
+
 ## 🛠️ Tecnologías Utilizadas
 
 - **Backend:** PHP
