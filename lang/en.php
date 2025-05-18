@@ -131,23 +131,30 @@ $translations = [
     'added_to_cart' => 'Added to cart.',
 
     // process_order.php
-    'address_saved' => 'Address saved successfully.',
     'order_summary' => 'Order Summary',
+    'address_saved' => 'Address saved successfully.',
     'cart_empty' => 'Your cart is empty.',
-    'delivery_fee' => 'Delivery fee',
+    'delivery_fee' => 'Home delivery fee',
     'total' => 'Total',
     'delivery_method' => 'Delivery method',
-    'select_method' => 'Select method',
+    'select_method' => '-- Select method --',
     'home_delivery' => 'Home delivery',
     'pickup_restaurant' => 'Pick up at restaurant',
-    'registered_address' => 'Registered address',
-    'delivery_time_info' => 'Your home delivery will arrive approximately 30-45 minutes after payment.',
+    'registered_address' => 'Saved address',
+    'delivery_time_info' => 'Your home delivery will arrive approximately 40 minutes after payment.',
     'change_address' => 'Change address',
     'enter_new_address' => 'Enter new address',
     'enter_address' => 'Enter your address',
     'save_address' => 'Save address',
     'restaurant_address' => 'Restaurant address',
-    'pickup_time_info' => 'Your order will be ready to pick up approximately 20 minutes after payment.',
+    'pickup_time_info' => 'Your order will be ready for pickup approximately 20 minutes after payment.',
+    'pay' => 'Pay',
+
+    // payment.php
+    'payment_title' => 'Payment',
+    'card_number' => 'Card number',
+    'card_name' => 'Cardholder name',
+    'payment_validation_error' => 'Please fill in the data correctly.',
     'pay' => 'Pay',
 
     // process_payment.php

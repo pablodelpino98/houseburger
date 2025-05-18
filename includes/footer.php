@@ -8,7 +8,7 @@
     <div class="footer-content">
         <div class="footer-section">
             <h4><?= htmlspecialchars($translations['contact'] ?? 'Contacto') ?></h4>
-            <p><?= htmlspecialchars($translations['phone'] ?? 'Tel') ?>: 123 456 789</p>
+            <p><?= htmlspecialchars($translations['phone'] ?? 'Tel') ?>: 928 123 456</p>
             <p>Email: info@houseburger.com</p>
         </div>
         <div class="footer-section">

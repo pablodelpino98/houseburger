@@ -9,19 +9,19 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['cart'])) {
 ?>
 <main class="form-page-container">
     <div class="payment-form">
-        <h1>Pago</h1>
+        <h1><?= $translations['payment_title'] ?></h1>
         <form id="paymentForm" action="process_payment.php" method="POST">
             
-            <label for="card_number">Número de tarjeta:</label>
+            <label for="card_number"><?= $translations['card_number'] ?>:</label>
             <input type="text" id="card_number" name="card_number" maxlength="19" required>
 
-            <label for="card_name">Nombre del titular:</label>
+            <label for="card_name"><?= $translations['card_name'] ?>:</label>
             <input type="text" id="card_name" name="card_name" required>
 
             <label for="cvv">CVV:</label>
             <input type="text" id="cvv" name="cvv" maxlength="3" required>
 
-            <button type="submit" class="btn-menu">Pagar</button>
+            <button type="submit" class="btn-menu"><?= $translations['pay'] ?></button>
         </form>
     </div>
 </main>
@@ -37,8 +37,8 @@ document.getElementById("paymentForm").addEventListener("submit", function(e) {
     const validCVV = /^\d{3}$/.test(cvv);
 
     if (!validCard || !validName || !validCVV) {
-        alert("Por favor, completa los datos correctamente.");
-        e.preventDefault(); // Cancelar el envío si no es válido
+        alert("<?= $translations['payment_validation_error'] ?>");
+        e.preventDefault(); // Cancel submission if invalid
     }
 });
 </script>
