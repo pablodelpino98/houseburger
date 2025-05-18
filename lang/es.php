@@ -83,6 +83,9 @@ $translations = [
     'login_button' => 'Entrar',
     'login_no_account' => '¿No tienes cuenta?',
     'login_register_link' => 'Regístrate aquí',
+    'email_invalid' => 'El correo electrónico no es válido.',
+    'password_required' => 'La contraseña es obligatoria.',
+    'login_failed' => 'Correo o contraseña incorrectos.',
 
     // register.php
     'register_title' => 'Registro',
@@ -101,6 +104,7 @@ $translations = [
     'register_error_password_mismatch' => 'Las contraseñas no coinciden.',
     'register_error_password_format' => 'La contraseña debe tener al menos 8 caracteres y un número.',
     'register_error_exists' => 'El correo o teléfono ya está registrado.',
+    'register_error_name_format' => 'El nombre debe contener letras.',
 
     // menu.php
     'menu_title' => 'Nuestra Carta',

@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = $translations['register_error_all_fields'];
     }
 
+    if (!preg_match('/[a-zA-ZáéíóúÁÉÍÓÚñÑ]/u', $name)) {
+        $errors[] = $translations['register_error_name_format'];
+    }
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = $translations['register_error_invalid_email'];
     }
@@ -67,19 +71,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($showForm) { ?>
             <form method="POST">
                 <label><?= $translations['register_name'] ?>:</label>
-                <input type="text" name="name" value="<?= htmlspecialchars($name) ?>" required>
+                <input type="text" name="name" value="<?= htmlspecialchars($name) ?>">
 
                 <label><?= $translations['register_email'] ?>:</label>
-                <input type="email" name="email" value="<?= htmlspecialchars($email) ?>" required>
+                <input type="email" name="email" value="<?= htmlspecialchars($email) ?>">
 
                 <label><?= $translations['register_phone'] ?>:</label>
-                <input type="text" name="phone" value="<?= htmlspecialchars($phone) ?>" required>
+                <input type="text" name="phone" value="<?= htmlspecialchars($phone) ?>">
 
                 <label><?= $translations['register_password'] ?>:</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password">
 
                 <label><?= $translations['register_confirm_password'] ?>:</label>
-                <input type="password" name="confirm_password" required>
+                <input type="password" name="confirm_password">
 
                 <button type="submit"><?= $translations['register_button'] ?></button>
             </form>
