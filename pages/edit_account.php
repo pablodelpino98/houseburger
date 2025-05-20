@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Obtener datos del formulario
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -17,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
+    // Validaciones
     if (!$name || !preg_match('/[a-zA-ZáéíóúÁÉÍÓÚñÑ]/u', $name)) {
         $errors[] = $translations['name_invalid'];
     }
@@ -29,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = $translations['phone_invalid'];
     }
 
+    // Update si no hay errores
     if (empty($errors)) {
         $sql = "UPDATE users SET name = ?, email = ?, phone = ?, address = ? WHERE id = ?";
         $stmt = $pdo->prepare($sql);

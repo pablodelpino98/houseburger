@@ -1,7 +1,7 @@
 <?php
 include '../includes/header.php';
 include '../cart/cart.php';
-include '../includes/database.php'; // Aquí se define $pdo (PDO)
+include '../includes/database.php';
 
 // Asegúrate de que el usuario esté logueado
 if (!isset($_SESSION['user_id'])) {
@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Obtener datos del usuario con PDO
+// Obtener datos del usuario
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT name, email, phone, address FROM users WHERE id = ?";
 $stmt = $pdo->prepare($sql);

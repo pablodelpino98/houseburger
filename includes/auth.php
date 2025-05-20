@@ -6,7 +6,7 @@ function isLoggedIn() {
 }
 
 function setLanguageCookie($lang) {
-    setcookie('lang', $lang, time() + (86400 * 30), "/"); // 30 días
+    setcookie('lang', $lang, time() + (60 * 60 * 24 * 30), "/"); // 30 días
 }
 
 if(isset($_GET['lang'])) {

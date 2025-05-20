@@ -38,7 +38,7 @@ document.getElementById("paymentForm").addEventListener("submit", function(e) {
 
     if (!validCard || !validName || !validCVV) {
         alert("<?= $translations['payment_validation_error'] ?>");
-        e.preventDefault(); // Cancel submission if invalid
+        e.preventDefault();
     }
 });
 </script>

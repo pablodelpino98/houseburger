@@ -21,6 +21,7 @@ include 'database.php';
                 </a>
             </div>
             
+            <!-- Menú -->
             <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="../pages/index.php"><?= htmlspecialchars($translations['home'] ?? 'Inicio') ?></a></li>
@@ -35,14 +36,19 @@ include 'database.php';
                 </ul>
             </nav>
             
+            <!-- Controles adicionales del encabezado -->
             <div class="header-controls">
+                <!-- Selector de idioma: permite cambiar entre español e inglés -->
                 <div class="language-switcher">
                     <a href="?lang=es">ES</a> | 
                     <a href="?lang=en">EN</a>
                 </div>
+
+                <!-- Botón del carrito de compras -->
                 <button class="cart-btn" onclick="toggleCart()">
                     🛒
                     <?php if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0): ?>
+                        <!-- Si hay productos en el carrito, muestra la cantidad -->
                         <span class="cart-count"><?= count($_SESSION['cart']) ?></span>
                     <?php endif; ?>
                 </button>

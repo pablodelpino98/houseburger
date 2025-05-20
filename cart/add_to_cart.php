@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         }
     }
-    unset($item); // romper referencia
+    unset($item); // romper referencia NECESARIO
 
     if (!$found) {
         $product['quantity'] = 1;
@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['cart'][] = $product;
     }
 
+    // Traducciones Carrito
     echo json_encode(['success' => true, 'cartCount' => count($_SESSION['cart'])]);
 }
 ?>

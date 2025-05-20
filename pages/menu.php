@@ -3,7 +3,7 @@ include '../includes/header.php';
 include '../cart/cart.php';
 include '../includes/database.php';
 
-// Función para renderizar productos por categoría con PDO
+// Función para renderizar productos por categoría
 function renderCategory($pdo, $category, $title) {
     $stmt = $pdo->prepare("SELECT * FROM products WHERE category = ? ORDER BY id ASC");
     $stmt->execute([$category]);
@@ -12,6 +12,7 @@ function renderCategory($pdo, $category, $title) {
     echo "<h2>$title</h2>";
     echo "<div class='product-list'>";
 
+    // Obtener descripción en español o inglés según la cookie
     $language = $_COOKIE['lang'] ?? 'es';
     $desc_column = $language === 'en' ? 'description_en' : 'description';
 
