@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $message = '';
 
-// Process form
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delivery_method'])) {
         $_SESSION['delivery_method'] = $_POST['delivery_method'];

@@ -2,6 +2,7 @@
 include '../includes/header.php';
 include '../includes/database.php';
 
+// Establecer hora Londres
 date_default_timezone_set('Europe/London');
 
 $order_id = $_GET['order_id'] ?? null;

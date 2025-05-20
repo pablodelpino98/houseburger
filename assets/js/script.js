@@ -1,18 +1,18 @@
-// Menú Mobile
+// Muestra u oculta el menú de navegación (modo responsive)
 function toggleMenu() {
   document.querySelector('.main-nav').classList.toggle('active');
 }
 
-// Carrito
+// Muestra u oculta el carrito y lo actualiza si se muestra
 function toggleCart() {
   const cartModal = document.getElementById('cartModal');
   cartModal.classList.toggle('show');
-
   if (cartModal.classList.contains('show')) {
     renderCart();
   }
 }
 
+// Cierra el carrito si se hace clic fuera de él
 window.onclick = function (event) {
   const cartModal = document.getElementById('cartModal');
   if (event.target === cartModal) {
@@ -21,6 +21,7 @@ window.onclick = function (event) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Referencias a elementos del modal
   const modal = document.getElementById('modal');
   const modalMessage = document.getElementById('modal-message');
   const refrescoSelect = document.getElementById('refrescoSelect');
@@ -30,12 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentProduct = null;
 
+  // Textos del modal con traducción
   const comboQuestion = translations.combo_question || '¿Desea añadir Papas Fritas Clásicas y un Refresco por 2,99€?';
   const yesAddCombo = translations.yes_add_combo || 'Sí, añadir combo';
   const noOnlyBurger = translations.no_only_burger || 'No, solo la hamburguesa';
   const closeText = translations.close || 'Cerrar';
   const addedToCart = translations.added_to_cart || 'Añadido al carrito';
 
+  // Muestra el modal de combo
   const showComboModal = () => {
     modal.classList.add('show');
     modal.style.display = 'flex';
@@ -48,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelComboBtn.textContent = noOnlyBurger;
   };
 
+  // Muestra el modal de confirmación tras añadir al carrito
   const showAddedModal = (message) => {
     modal.classList.add('show');
     modal.style.display = 'flex';
@@ -59,12 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalBtn.textContent = closeText;
   };
 
+  // Cierra el modal
   const closeModal = () => {
     modal.classList.remove('show');
     modal.style.display = 'none';
     currentProduct = null;
   };
 
+  // Añade un producto al carrito (vía fetch)
   const addToCart = (product, showMessage = true) => {
     fetch('../cart/add_to_cart.php', {
       method: 'POST',
@@ -74,13 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(res => res.json())
       .then(() => {
         renderCart();
-        if (showMessage) {
-          showAddedModal(addedToCart);
-        }
+        if (showMessage) showAddedModal(addedToCart);
       })
       .catch(err => console.error('Error al añadir al carrito:', err));
   };
 
+  // Detecta clic en botones de "Añadir al carrito"
   document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', (e) => {
       const productCard = e.target.closest('.product-card');
@@ -93,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       currentProduct = product;
 
+      // Si es hamburguesa, pregunta por el combo
       if (product.type === 'hamburguesa') {
         showComboModal();
       } else {
@@ -101,11 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Añadir solo la hamburguesa (sin combo)
   cancelComboBtn.addEventListener('click', () => {
     addToCart(currentProduct, false);
     showAddedModal(addedToCart);
   });
 
+  // Confirmar combo: pide refresco, y luego añade
   confirmComboBtn.addEventListener('click', () => {
     if (refrescoSelect.style.display === 'none') {
       refrescoSelect.style.display = 'inline-block';
@@ -125,13 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Botones para cerrar el modal
   closeModalBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 });
 
-// Renderizar carrito desde PHP sesión
+// Muestra el contenido del carrito consultando el backend
 function renderCart() {
   fetch('../cart/get_cart.php')
     .then(res => res.json())
@@ -172,7 +181,7 @@ function renderCart() {
     });
 }
 
-// Eliminar un producto por índice
+// Elimina un producto del carrito por su índice
 function removeFromCart(index) {
   fetch('../cart/remove_from_cart.php', {
     method: 'POST',
@@ -181,16 +190,13 @@ function removeFromCart(index) {
   })
     .then(res => res.json())
     .then(data => {
-      if (data.status === 'ok') {
-        renderCart();
-      } else {
-        console.error('Error al eliminar:', data.message);
-      }
+      if (data.status === 'ok') renderCart();
+      else console.error('Error al eliminar:', data.message);
     })
     .catch(err => console.error('Error al eliminar producto:', err));
 }
 
-// Vaciar carrito completamente
+// Vacía el carrito completamente
 function clearCart() {
   fetch('../cart/clear_cart.php')
     .then(res => res.json())

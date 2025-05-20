@@ -9,6 +9,7 @@ $name = '';
 $email = '';
 $phone = '';
 
+// Obtener datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirm = $_POST['confirm_password'] ?? '';
 
+    // Validaciones
     if (empty($name) || empty($email) || empty($phone) || empty($password) || empty($confirm)) {
         $errors[] = $translations['register_error_all_fields'];
     }
