@@ -68,7 +68,7 @@ La aplicación utiliza cookies para gestionar el idioma de la interfaz de manera
 
 ## ▶️ ¿Cómo usar?
 
-- Accede a la web desde tu navegador en `http://localhost/houseburger/`.
+- Accede a la web desde tu navegador en `http://localhost/houseburger/pages`.
 - Visualiza productos, agrega al carrito y elige entre pedir a domicilio o recoger en el restaurante.
 - Administra menús y pedidos desde el panel de administración si tienes permisos.
 
